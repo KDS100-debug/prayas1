@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prayas Computer Education Center</title>
+  <style>
+    :root {
+      --pc-red-950: #350404;
+      --pc-red-900: #650707;
+      --pc-red-800: #8f0000;
+      --pc-red-700: #b80000;
+      --pc-red-600: #d40000;
+      --pc-ink: #171717;
+      --pc-muted: #5f6572;
+      --pc-card: rgba(255, 255, 255, 0.94);
+      --pc-line: rgba(184, 0, 0, 0.15);
+      --pc-radius: 8px;
+      --pc-shadow: 0 18px 46px rgba(42, 8, 8, 0.14);
+      --pc-shadow-lg: 0 30px 80px rgba(42, 8, 8, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--pc-ink);
+      background:
+        linear-gradient(90deg, rgba(184, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(184, 0, 0, 0.035) 1px, transparent 1px),
+        linear-gradient(135deg, #ffffff 0%, #fff7f7 48%, #ffffff 100%);
+      background-size: 44px 44px, 44px 44px, auto;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px clamp(18px, 4vw, 48px);
+      background: linear-gradient(135deg, var(--pc-red-950), var(--pc-red-700));
+      color: #fff;
+      box-shadow: var(--pc-shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 900;
+      font-size: clamp(17px, 2.4vw, 24px);
+      line-height: 1.15;
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+      flex: 0 0 54px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      object-fit: cover;
+      background: #fff;
+    }
+
+    .topbar a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: #fff;
+      font-weight: 800;
+      padding: 9px 12px;
+      border-radius: var(--pc-radius);
+      background: rgba(255, 255, 255, 0.12);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .topbar a:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: clamp(34px, 6vw, 72px) 0;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(300px, 0.98fr);
+      gap: clamp(22px, 4vw, 44px);
+      align-items: center;
+      min-height: 620px;
+      padding: clamp(26px, 5vw, 58px);
+      border-radius: var(--pc-radius);
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(53, 4, 4, 0.97), rgba(184, 0, 0, 0.88)),
+        radial-gradient(circle at 80% 14%, rgba(255, 255, 255, 0.18), transparent 30%);
+      box-shadow: var(--pc-shadow-lg);
+      overflow: hidden;
+    }
+
+    .kicker {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 7px 11px;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffe2e2;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: clamp(16px, 2.2vw, 20px);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+      padding: 11px 14px;
+      border-radius: var(--pc-radius);
+      background: #fff;
+      color: var(--pc-red-800);
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .pulse {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #16a34a;
+      box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6);
+      animation: pulse 1.7s infinite;
+    }
+
+    .computer-graphic {
+      position: relative;
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+    }
+
+    .monitor {
+      width: min(100%, 520px);
+      border: 10px solid #222;
+      border-radius: 18px;
+      background: #101010;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+
+    .screen {
+      min-height: 310px;
+      padding: 18px;
+      background:
+        linear-gradient(135deg, rgba(10, 10, 10, 0.92), rgba(70, 7, 7, 0.88)),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: auto, 26px 26px;
+    }
+
+    .window-bar {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ff5f57;
+    }
+
+    .dot:nth-child(2) {
+      background: #ffbd2e;
+    }
+
+    .dot:nth-child(3) {
+      background: #28c840;
+    }
+
+    .code-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .code-line {
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.2));
+      opacity: 0.88;
+      animation: shimmer 2.4s ease-in-out infinite;
+    }
+
+    .code-line:nth-child(1) { width: 78%; }
+    .code-line:nth-child(2) { width: 58%; animation-delay: 0.2s; }
+    .code-line:nth-child(3) { width: 86%; animation-delay: 0.4s; }
+    .code-line:nth-child(4) { width: 44%; animation-delay: 0.6s; }
+
+    .dashboard-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .mini-card {
+      min-height: 82px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--pc-radius);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .mini-card strong {
+      display: block;
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+
+    .stand {
+      width: 120px;
+      height: 70px;
+      margin: 0 auto;
+      background: linear-gradient(#222, #444);
+      clip-path: polygon(36% 0, 64% 0, 78% 100%, 22% 100%);
+    }
+
+    .base {
+      width: 220px;
+      height: 18px;
+      margin: 0 auto;
+      border-radius: 999px;
+      background: #252525;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+    }
+
+    .floating-chip {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 74px;
+      height: 74px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      font-size: 34px;
+      font-weight: 900;
+      color: #fff;
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.2);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .chip-a { top: 18px; right: 2%; }
+    .chip-b { left: 0; bottom: 88px; animation-delay: 0.8s; }
+
+    .section-title {
+      margin: clamp(42px, 7vw, 74px) 0 18px;
+      color: var(--pc-red-800);
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .section-lead {
+      max-width: 780px;
+      margin: 0 auto 28px;
+      text-align: center;
+      color: var(--pc-muted);
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: clamp(16px, 3vw, 24px);
+    }
+
+    .card {
+      position: relative;
+      min-height: 210px;
+      padding: 24px;
+      border: 1px solid var(--pc-line);
+      border-radius: var(--pc-radius);
+      background: var(--pc-card);
+      box-shadow: var(--pc-shadow);
+      overflow: hidden;
+      transition: transform 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--pc-shadow-lg);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: linear-gradient(90deg, var(--pc-red-900), var(--pc-red-600), #222);
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 15px;
+      border-radius: var(--pc-radius);
+      color: #fff;
+      background: linear-gradient(135deg, var(--pc-red-900), var(--pc-red-600));
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .card h2,
+    .card h3 {
+      color: var(--pc-red-800);
+      font-size: 22px;
+      line-height: 1.15;
+      margin-bottom: 9px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--pc-muted);
+    }
+
+    .card ul {
+      display: grid;
+      gap: 8px;
+      padding-left: 18px;
+    }
+
+    .roadmap {
+      display: grid;
+      gap: 14px;
+      counter-reset: step;
+    }
+
+    .roadmap-item {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid var(--pc-line);
+      border-radius: var(--pc-radius);
+      background: #fff;
+      box-shadow: 0 8px 22px rgba(42, 8, 8, 0.08);
+    }
+
+    .roadmap-item::before {
+      counter-increment: step;
+      content: counter(step);
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pc-red-900), var(--pc-red-600));
+      color: #fff;
+      font-weight: 900;
+    }
+
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 12px rgba(22, 163, 74, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.5; transform: scaleX(0.94); transform-origin: left; }
+      50% { opacity: 1; transform: scaleX(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .computer-graphic {
+        min-height: 380px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .topbar a {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .page {
+        width: min(100% - 18px, 1180px);
+      }
+
+      .hero {
+        padding: 24px 18px;
+      }
+
+      .dashboard-mini {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-chip {
+        display: none;
+      }
+
+      .roadmap-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../advanced-theme.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="../IMAGES/Prayas/logo.jpg" alt="Prayas Logo">
+        <span>Prayas Computer Education Center</span>
+      </div>
+      <a href="../index.html">Home</a>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div>
+          <p class="kicker">Upcoming Asset of PACB</p>
+          <h1>Computer education for a confident digital generation.</h1>
+          <p>
+            Prayas Computer Education Center is being developed as the next learning asset of
+            the organization, bringing practical computer literacy, digital confidence, and
+            technology-supported education to students across the Prayas network.
+          </p>
+          <div class="status-pill">
+            <span class="pulse"></span>
+            Upcoming center in development
+          </div>
+        </div>
+
+        <div class="computer-graphic" aria-label="Computer education graphic">
+          <div class="floating-chip chip-a">&lt;/&gt;</div>
+          <div class="floating-chip chip-b">01</div>
+          <div>
+            <div class="monitor">
+              <div class="screen">
+                <div class="window-bar">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+                <div class="code-grid">
+                  <span class="code-line"></span>
+                  <span class="code-line"></span>
+                  <span class="code-line"></span>
+                  <span class="code-line"></span>
+                </div>
+                <div class="dashboard-mini">
+                  <div class="mini-card"><strong>ICT</strong><span>Digital literacy</span></div>
+                  <div class="mini-card"><strong>Lab</strong><span>Hands-on practice</span></div>
+                  <div class="mini-card"><strong>Web</strong><span>Online learning</span></div>
+                  <div class="mini-card"><strong>Skill</strong><span>Future readiness</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="stand"></div>
+            <div class="base"></div>
+          </div>
+        </div>
+      </section>
+
+      <h2 class="section-title">What the Center Will Support</h2>
+      <p class="section-lead">
+        The center is planned as a practical bridge between classroom learning and modern
+        digital skills, especially for students who need better access to computers.
+      </p>
+
+      <section class="grid">
+        <article class="card">
+          <div class="icon">⌨</div>
+          <h2>Foundational Skills</h2>
+          <p>Keyboard practice, typing, file handling, document creation, presentations, spreadsheets, and responsible device use.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">▦</div>
+          <h2>Computer Lab Learning</h2>
+          <p>Guided hands-on sessions where students learn by doing, revising, and applying technology to school work.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">◎</div>
+          <h2>Digital Awareness</h2>
+          <p>Safe internet use, online research habits, basic cyber hygiene, and confidence using educational platforms.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">{ }</div>
+          <h2>Future Pathways</h2>
+          <p>Introductory exposure to coding logic, creative digital projects, and technology-enabled career awareness.</p>
+        </article>
+      </section>
+
+      <h2 class="section-title">Development Roadmap</h2>
+      <section class="roadmap">
+        <div class="roadmap-item">
+          <div>
+            <h3>Prepare the Learning Space</h3>
+            <p>Set up a dedicated, student-friendly computer learning environment with safe seating, power, and access planning.</p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div>
+            <h3>Install Systems and Learning Tools</h3>
+            <p>Equip the center with computers, basic productivity software, learning resources, and supervised usage systems.</p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div>
+            <h3>Launch Student Programs</h3>
+            <p>Begin structured batches for foundational computer literacy, academic support, and project-based digital learning.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../responsive-site.js"></script>
+</body>
+</html>

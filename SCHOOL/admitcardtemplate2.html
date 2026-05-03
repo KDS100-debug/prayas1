@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admit Card - Brahmaputra Jatiya Bidyalaya</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #eeeeee;
+        color: #111111;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 20px;
+    }
+
+    .form-box,
+    .card {
+        width: min(800px, 100%);
+        margin: 0 auto;
+        background: #ffffff;
+    }
+
+    .form-box {
+        border: 1px solid #bdbdbd;
+        margin-bottom: 18px;
+        padding: 16px;
+    }
+
+    .form-box h2 {
+        font-size: 18px;
+        margin-bottom: 14px;
+    }
+
+    .form-row {
+        margin-bottom: 10px;
+    }
+
+    .form-row label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .form-row input {
+        border: 1px solid #9a9a9a;
+        font-size: 14px;
+        padding: 8px;
+        width: 100%;
+    }
+
+    .btn {
+        background: #ffffff;
+        border: 1px solid #111111;
+        color: #111111;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 700;
+        margin: 4px 8px 0 0;
+        padding: 9px 14px;
+    }
+
+    .card {
+        border: 2px solid #111111;
+        padding: 24px 30px 28px;
+    }
+
+    .header {
+        align-items: center;
+        border-bottom: 1px solid #111111;
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 115px 1fr 115px;
+        margin-bottom: 20px;
+        padding-bottom: 14px;
+    }
+
+    .logo-box,
+    .header-spacer {
+        align-items: center;
+        display: flex;
+        height: 105px;
+        justify-content: center;
+        width: 115px;
+    }
+
+    .logo {
+        display: block;
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    .school-info {
+        text-align: center;
+    }
+
+    .school-name {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    .title {
+        border: 1px solid #111111;
+        display: inline-block;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0;
+        margin-top: 10px;
+        padding: 4px 18px;
+    }
+
+    .info-row {
+        align-items: flex-end;
+        display: grid;
+        font-size: 16px;
+        gap: 12px;
+        grid-template-columns: 145px 1fr;
+        margin-bottom: 13px;
+    }
+
+    .label {
+        font-weight: 700;
+    }
+
+    .value {
+        border-bottom: 1px solid #111111;
+        min-height: 24px;
+        padding: 0 6px 3px;
+    }
+
+    .footer {
+        align-items: flex-end;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 34px;
+        gap: 20px;
+    }
+
+    .instructions {
+        font-size: 12px;
+        line-height: 1.55;
+        max-width: 460px;
+    }
+
+    .signature-block {
+        text-align: center;
+        width: 210px;
+    }
+
+    .signature-box {
+        align-items: flex-end;
+        display: flex;
+        height: 76px;
+        justify-content: center;
+        margin-bottom: 4px;
+    }
+
+    .signature-img {
+        display: block;
+        max-height: 72px;
+        max-width: 190px;
+        object-fit: contain;
+    }
+
+    .sig-line {
+        border-top: 1px solid #111111;
+        font-size: 12px;
+        line-height: 1.35;
+        padding-top: 4px;
+    }
+
+    @media (max-width: 640px) {
+        body {
+            padding: 10px;
+        }
+
+        .card {
+            padding: 16px;
+        }
+
+        .header {
+            grid-template-columns: 80px 1fr;
+        }
+
+        .header-spacer {
+            display: none;
+        }
+
+        .logo-box {
+            height: 80px;
+            width: 80px;
+        }
+
+        .school-name {
+            font-size: 18px;
+        }
+
+        .info-row {
+            grid-template-columns: 110px 1fr;
+        }
+
+        .footer {
+            align-items: stretch;
+            flex-direction: column;
+        }
+    }
+
+    @media print {
+        body {
+            background: #ffffff;
+            padding: 0;
+        }
+
+        .form-box {
+            display: none;
+        }
+
+        .card {
+            border: 2px solid #111111;
+            width: 100%;
+        }
+    }
+</style>
+</head>
+
+<body>
+<div class="form-box">
+    <h2>Generate Admit Card</h2>
+
+    <div class="form-row">
+        <label for="inputName">Name</label>
+        <input type="text" id="inputName" placeholder="Enter student name">
+    </div>
+
+    <div class="form-row">
+        <label for="inputRoll">Roll Number</label>
+        <input type="text" id="inputRoll" placeholder="Enter roll number">
+    </div>
+
+    <div class="form-row">
+        <label for="inputClass">Class</label>
+        <input type="text" id="inputClass" placeholder="Enter class">
+    </div>
+
+    <button class="btn" type="button" onclick="generateCard()">Generate Admit Card</button>
+    <button class="btn" type="button" onclick="downloadCard()">Print / Save PDF</button>
+</div>
+
+<div class="card" id="admitCard">
+    <div class="header">
+        <div class="logo-box">
+            <img src="../IMAGES/SCHOOLS/s2l.png" class="logo" alt="Brahmaputra Jatiya Bidyalaya logo">
+        </div>
+
+        <div class="school-info">
+            <div class="school-name">Brahmaputra Jatiya Bidyalaya</div>
+            <div class="subtitle">Rongagora, Assam</div>
+            <div class="title">ADMIT CARD</div>
+        </div>
+
+        <div class="header-spacer"></div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">Name</div>
+        <div class="value" id="student_name">&mdash;</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">Roll Number</div>
+        <div class="value" id="roll_number">&mdash;</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">Class</div>
+        <div class="value" id="class_name">&mdash;</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">Date</div>
+        <div class="value" id="exam_date">&mdash;</div>
+    </div>
+
+    <div class="footer">
+        <div class="instructions">
+            <strong>Instructions:</strong><br>
+            &bull; Carry this admit card during all examinations.<br>
+            &bull; Follow invigilator guidelines inside the exam hall.<br>
+            &bull; Misconduct may lead to disqualification.
+        </div>
+
+        <div class="signature-block">
+            <div class="signature-box">
+                <img src="../IMAGES/SCHOOLS/s2s.png" class="signature-img" alt="Head signature">
+            </div>
+            <div class="sig-line">
+                Head of Institution<br>
+                Brahmaputra Jatiya Bidyalaya
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function generateCard() {
+        const name = document.getElementById("inputName").value.trim();
+        const roll = document.getElementById("inputRoll").value.trim();
+        const className = document.getElementById("inputClass").value.trim();
+        const today = new Date().toLocaleDateString("en-GB");
+
+        document.getElementById("student_name").textContent = name || "\u2014";
+        document.getElementById("roll_number").textContent = roll || "\u2014";
+        document.getElementById("class_name").textContent = className || "\u2014";
+        document.getElementById("exam_date").textContent = today;
+    }
+
+    function downloadCard() {
+        window.print();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("exam_date").textContent = new Date().toLocaleDateString("en-GB");
+    });
+</script>
+</body>
+</html>

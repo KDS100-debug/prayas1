@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Rally - Prayas Adhyayan Chakra</title>
+  <link rel="stylesheet" href="bookrally-styles.css">
+  <link rel="stylesheet" href="../advanced-theme.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="../IMAGES/Prayas/logo.jpg" alt="Prayas Logo">
+      <span>Prayas Adhyayan Chakra</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+    </ul>
+  </nav>
+
+  <!-- ITEMS SECTION -->
+  <section class="items-section" id="items-section">
+    <div class="items-container">
+      <h1 class="items-section-title">Book Rally</h1>
+      <p class="items-section-subtitle">Browse Our Collection of Books</p>
+
+      <div id="publication-party-balances" class="balances-subsection" aria-labelledby="balances-title" hidden>
+        <div class="balances-header">
+          <div>
+            <h2 id="balances-title">Publication Party Balances</h2>
+            <p>Live balance data from the published publication sheet.</p>
+          </div>
+          <span id="balances-count" class="balances-count">Loading...</span>
+        </div>
+        <div class="balances-loading" id="balances-loading">
+          <div class="items-spinner"></div>
+          <p>Loading balances...</p>
+        </div>
+        <div class="balances-error" id="balances-error" style="display: none;">
+          <p>Failed to load publication balances. Please try again later.</p>
+        </div>
+        <div class="balances-table-wrap" id="balances-table-wrap" style="display: none;">
+          <table class="balances-table">
+            <thead>
+              <tr>
+                <th>Publication Party</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody id="balances-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ITEMS DISPLAY SUBSECTION -->
+      <div class="items-subsection">
+        <div class="items-loading" id="items-loading">
+          <div class="items-spinner"></div>
+          <p>Loading books...</p>
+        </div>
+        <div class="items-error" id="items-error" style="display: none;">
+          <p>Failed to load books. Please try again later.</p>
+        </div>
+        <div class="items-grid" id="items-grid"></div>
+        <div class="items-show-more-container" id="items-show-more" style="display: none; text-align: center; margin-top: 30px;">
+          <button class="items-show-more-btn" onclick="BookRallyManager.showMoreItems()">Show More Books</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <img src="../IMAGES/Prayas/logo.jpg" alt="PRAYAS Logo" class="footer-logo">
+        <h2 class="footer-brand">PRAYAS ADHAYANA CHAKRA</h2>
+        <div class="footer-description">
+          <p>Empowering education through quality learning and holistic development.</p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../SCHOOL/school.html">Schools</a></li>
+            <li><a href="../index.html#about-us">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Sections</h3>
+          <ul>
+            <li><a href="#">Book Rally</a></li>
+            <li><a href="../PUBLICATIONS/publications.html">Publications</a></li>
+            <li><a href="../AMAR PATHAR/amarpathar.html">Amar Pathar</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-content">
+        <p>© 2026 PRAYAS ADHAYAN CHAKRA. All rights reserved.</p>
+        <p>Created by <strong>Ashish Alam Kabir</strong> and <strong>Farhan Ahmed</strong></p>
+      </div>
+
+      <div class="footer-links-bottom">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="bookrally-script.js"></script>
+  <script src="../responsive-site.js"></script>
+</body>
+</html>

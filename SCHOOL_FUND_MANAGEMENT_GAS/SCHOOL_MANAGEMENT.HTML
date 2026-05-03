@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Inter-Department Fund Management</title>
+  <link rel="stylesheet" href="SCHOOL_MANAGEMENT.CSS">
+</head>
+<body>
+  <div id="app">
+    <section id="loginView" class="login-view">
+      <div class="login-card">
+        <h1>School Fund Management</h1>
+        <p>Login with your department ID and password.</p>
+        <label for="loginId">Login ID</label>
+        <input id="loginId" type="text" autocomplete="username" placeholder="HEAD or ADMISSION">
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Password">
+        <button id="loginButton" type="button">Login</button>
+        <div id="loginAlert" class="alert" hidden></div>
+      </div>
+    </section>
+
+    <section id="departmentView" class="dashboard" hidden>
+      <aside class="sidebar">
+        <h2 id="deptSidebarName">Department</h2>
+        <button data-scroll="#deptSummary" type="button">Summary</button>
+        <button data-scroll="#requestFund" type="button">Request Fund</button>
+        <button data-scroll="#myRequests" type="button">My Requests</button>
+        <button data-scroll="#assignedTransfers" type="button">Transfers</button>
+        <button data-scroll="#myTransactions" type="button">Transactions</button>
+        <button data-scroll="#myLedger" type="button">Ledger</button>
+        <button class="logout-button" type="button">Logout</button>
+      </aside>
+
+      <main class="main-panel">
+        <div class="page-header">
+          <div>
+            <p class="kicker">Department Dashboard</p>
+            <h1 id="deptTitle">Department</h1>
+          </div>
+          <button id="refreshDept" type="button">Refresh</button>
+        </div>
+
+        <section id="deptSummary" class="card-grid"></section>
+
+        <section id="requestFund" class="panel">
+          <h2>Request Fund</h2>
+          <div class="form-grid">
+            <label>Amount<input id="requestAmount" type="number" min="1" step="0.01"></label>
+            <label>Purpose<textarea id="requestPurpose" rows="3"></textarea></label>
+          </div>
+          <button id="requestFundButton" type="button">Request Fund</button>
+        </section>
+
+        <section id="myRequests" class="panel">
+          <h2>My Requests</h2>
+          <div id="myRequestsTable" class="table-wrap"></div>
+        </section>
+
+        <section id="assignedTransfers" class="panel">
+          <h2>Assigned Transfer Requests</h2>
+          <div id="assignedTransfersTable" class="table-wrap"></div>
+        </section>
+
+        <section id="myTransactions" class="panel">
+          <h2>My Transactions</h2>
+          <div id="myTransactionsTable" class="table-wrap"></div>
+        </section>
+
+        <section id="myLedger" class="panel">
+          <h2>My Ledger</h2>
+          <div id="myLedgerTable" class="table-wrap"></div>
+        </section>
+      </main>
+    </section>
+
+    <section id="headView" class="dashboard" hidden>
+      <aside class="sidebar">
+        <h2>Head Department</h2>
+        <button data-scroll="#headSummary" type="button">Summary</button>
+        <button data-scroll="#departmentBalances" type="button">Balances</button>
+        <button data-scroll="#pendingRequests" type="button">Pending</button>
+        <button data-scroll="#approvedRequests" type="button">Approved</button>
+        <button data-scroll="#rejectedRequests" type="button">Rejected</button>
+        <button data-scroll="#transferredRequests" type="button">Transferred</button>
+        <button data-scroll="#allTransactions" type="button">Transactions</button>
+        <button data-scroll="#globalLedger" type="button">Ledger</button>
+        <button data-scroll="#reports" type="button">Reports</button>
+        <button class="logout-button" type="button">Logout</button>
+      </aside>
+
+      <main class="main-panel">
+        <div class="page-header">
+          <div>
+            <p class="kicker">Head Dashboard</p>
+            <h1>Fund Approval and Ledger Control</h1>
+          </div>
+          <button id="refreshHead" type="button">Refresh</button>
+        </div>
+
+        <section id="headSummary" class="card-grid"></section>
+
+        <section id="departmentBalances" class="panel">
+          <h2>All Department Balances</h2>
+          <div id="departmentBalancesTable" class="table-wrap"></div>
+        </section>
+
+        <section id="pendingRequests" class="panel">
+          <h2>Pending Requests</h2>
+          <div id="pendingRequestsTable" class="table-wrap"></div>
+        </section>
+
+        <section id="approvedRequests" class="panel">
+          <h2>Approved Requests</h2>
+          <div id="approvedRequestsTable" class="table-wrap"></div>
+        </section>
+
+        <section id="rejectedRequests" class="panel">
+          <h2>Rejected Requests</h2>
+          <div id="rejectedRequestsTable" class="table-wrap"></div>
+        </section>
+
+        <section id="transferredRequests" class="panel">
+          <h2>Transferred Requests</h2>
+          <div id="transferredRequestsTable" class="table-wrap"></div>
+        </section>
+
+        <section id="allRequests" class="panel">
+          <h2>All Fund Requests</h2>
+          <div id="allRequestsTable" class="table-wrap"></div>
+        </section>
+
+        <section id="allTransactions" class="panel">
+          <h2>All Transactions</h2>
+          <div id="allTransactionsTable" class="table-wrap"></div>
+        </section>
+
+        <section id="globalLedger" class="panel">
+          <h2>Global Ledger</h2>
+          <div id="globalLedgerTable" class="table-wrap"></div>
+        </section>
+
+        <section id="reports" class="panel">
+          <h2>Reports</h2>
+          <div class="form-grid report-grid">
+            <label>Department<select id="reportDepartment"></select></label>
+            <label>Start Date<input id="reportStart" type="date"></label>
+            <label>End Date<input id="reportEnd" type="date"></label>
+            <label>Status<select id="reportStatus">
+              <option value="">All</option>
+              <option>Pending</option>
+              <option>Approved</option>
+              <option>Rejected</option>
+              <option>Transferred</option>
+            </select></label>
+          </div>
+          <div class="button-row">
+            <button id="departmentReportButton" type="button">Department Ledger Report</button>
+            <button id="transactionReportButton" type="button">Transaction Report</button>
+            <button id="balanceReportButton" type="button">Balance Summary Report</button>
+            <button id="statusReportButton" type="button">Request Status Report</button>
+          </div>
+          <div id="reportOutput" class="report-output"></div>
+        </section>
+      </main>
+    </section>
+  </div>
+
+  <div id="actionModal" class="modal" hidden>
+    <div class="modal-card">
+      <h2 id="actionModalTitle"></h2>
+      <div id="actionModalBody"></div>
+      <div class="button-row">
+        <button id="actionConfirm" type="button">Confirm</button>
+        <button id="actionCancel" class="secondary" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="SCHOOL_MANAGEMENT.JS"></script>
+</body>
+</html>
+
+
+

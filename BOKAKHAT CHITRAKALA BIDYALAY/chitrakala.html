@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOKAKHAT CHITRAKALA BIDYALAY - Prayas Adhyayan Chakra</title>
+  <link rel="stylesheet" href="chitrakala.css">
+  <link rel="stylesheet" href="../advanced-theme.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="../IMAGES/Prayas/logo.jpg" alt="Prayas Logo">
+      <span>Prayas Adhyayan Chakra</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+    </ul>
+  </nav>
+
+  <!-- FEE PAYMENT SECTION -->
+  <section class="fee-section">
+    <div class="fee-header">
+      <p class="section-kicker">Bokakhat Chitrakala Bidyalay</p>
+      <h1>Fee Payment</h1>
+      <p>View the live fee structure and select your fee type and class to continue.</p>
+    </div>
+
+    <div class="fee-box">
+      <div id="feeStatus" class="fee-status" role="status" aria-live="polite">
+        Loading fee structure...
+      </div>
+
+      <!-- Fee Sheet Display -->
+      <div id="feeSheetDisplay" class="fee-sheet-display">
+        <h2>Fee Structure</h2>
+        <div id="feeSheetTable" class="sheet-table-container" aria-live="polite"></div>
+      </div>
+
+      <!-- Fee Type Selection -->
+      <div class="fee-selection-group">
+        <label for="feeType">Select Fee Type</label>
+        <select id="feeType" disabled>
+          <option value="">Loading fee types...</option>
+        </select>
+      </div>
+
+      <!-- Class Selection -->
+      <div class="fee-selection-group">
+        <label for="classType">Select Class</label>
+        <select id="classType" disabled>
+          <option value="">-- Select Class --</option>
+        </select>
+      </div>
+
+      <!-- Amount Display -->
+      <div id="amountDisplay" class="amount-display" hidden>
+        <h3>Fee Amount</h3>
+        <div class="amount-box">
+          <span id="selectedClass" class="detail-label"></span>
+          <span id="selectedFeeType" class="detail-label"></span>
+          <div class="amount-value">
+            <span id="feeAmount"></span>
+          </div>
+        </div>
+      </div>
+
+      <button id="payBtn" class="pay-btn" type="button" hidden>
+        Proceed to Payment
+      </button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <img src="../IMAGES/Prayas/logo.jpg" alt="PRAYAS Logo" class="footer-logo">
+        <h2 class="footer-brand">PRAYAS ADHAYANA CHAKRA</h2>
+        <div class="footer-description">
+          <p>Empowering education through quality learning and holistic development.</p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../SCHOOL/school.html">Schools</a></li>
+            <li><a href="../index.html#about-us">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Sections</h3>
+          <ul>
+            <li><a href="../PRAYAS BOOK RALLY/bookrally.html">Book Rally</a></li>
+            <li><a href="../PUBLICATIONS/publications.html">Publications</a></li>
+            <li><a href="#">Amar Pathar</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-content">
+        <p>© 2026 PRAYAS ADHAYAN CHAKRA. All rights reserved.</p>
+        <p>Created by <strong>Ashish Alam Kabir</strong> and <strong>Farhan Ahmed</strong></p>
+      </div>
+
+      <div class="footer-links-bottom">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="chitrakala.js"></script>
+  <script src="../responsive-site.js"></script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Internal Fund Request & Transfer System</title>
+  <link rel="stylesheet" href="department.css" />
+  <!-- jsPDF + AutoTable (CDN) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="../IMAGES/Prayas/logo.jpg" alt="Prayas logo" class="brand__logo" />
+        <div class="brand__title">PRAYAS ADHYAN CHAAKRA, FINANCIAL AUDIT</div>
+      </div>
+
+      <div class="topbar__right">
+        <div id="sessionBadge" class="session-badge hidden">
+          <span class="pill" id="rolePill">ROLE</span>
+          <span class="session-badge__user" id="userLabel">USER</span>
+        </div>
+        <button id="logoutBtn" class="btn btn--secondary hidden">Logout</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Login -->
+      <section id="loginView" class="card view">
+        <h1 class="h1">Login</h1>
+        <p class="muted">Use your department or HEAD credentials to access the system.</p>
+
+        <form id="loginForm" class="form">
+          <div class="grid-2">
+            <div class="field">
+              <label for="username">Username</label>
+              <input id="username" name="username" autocomplete="username" list="departmentLoginUsers" required />
+              <datalist id="departmentLoginUsers"></datalist>
+            </div>
+            <div class="field">
+              <label for="password">Password</label>
+              <input id="password" name="password" type="password" autocomplete="current-password" required />
+            </div>
+          </div>
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit">Sign In</button>
+          </div>
+          <div id="loginError" class="alert alert--error hidden"></div>
+        </form>
+
+        <div class="divider"></div>
+        <div class="muted small">
+          Storage: Google Sheets (audit-first). All transitions are timestamped and logged.
+        </div>
+      </section>
+
+      <!-- Head Dashboard -->
+      <section id="headView" class="view hidden">
+        <div class="kpi-row" id="headKpis"></div>
+
+        <div class="tabs">
+          <button class="tab tab--active" data-tab="head-requests">All Requests</button>
+          <button class="tab" data-tab="head-approvals">Approvals Queue</button>
+          <button class="tab" data-tab="head-add-funds">Add Funds</button>
+          <button class="tab" data-tab="head-assign">Assign Payer</button>
+          <button class="tab" data-tab="head-transactions">All Transactions</button>
+          <button class="tab" data-tab="head-ledger">Global Ledger</button>
+          <button class="tab" data-tab="head-audit">Audit Logs</button>
+        </div>
+
+        <div class="tabpanes">
+          <div id="head-requests" class="tabpane tabpane--active">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">All Requests</h2>
+                <div class="toolbar">
+                  <select id="headReqStatusFilter" class="input">
+                    <option value="">All Statuses</option>
+                    <option>PENDING</option>
+                    <option>APPROVED</option>
+                    <option>REJECTED</option>
+                    <option>ASSIGNED</option>
+                    <option>PAID_PENDING_RECEIPT</option>
+                    <option>COMPLETED</option>
+                  </select>
+                  <select id="headReqDeptFilter" class="input"></select>
+                  <input id="headReqSearch" class="input" placeholder="Search: Request ID / Purpose" />
+                  <button id="headReqExportBtn" class="btn btn--secondary">Export (CSV)</button>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="headRequestsTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div id="head-approvals" class="tabpane">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">Approvals Queue (PENDING)</h2>
+                <div class="toolbar">
+                  <input id="headApprovalSearch" class="input" placeholder="Search: Department / Purpose / ID" />
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="headApprovalsTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div id="head-add-funds" class="tabpane">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">Add Funds To Department</h2>
+              </div>
+
+              <form id="headAddFundsForm" class="form">
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="fundDept">Department</label>
+                    <select id="fundDept" required></select>
+                  </div>
+                  <div class="field">
+                    <label for="fundAmount">Amount</label>
+                    <input id="fundAmount" type="number" min="0" step="0.01" required />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="fundNote">Note</label>
+                  <input id="fundNote" maxlength="140" placeholder="Grant, opening balance, correction, etc." required />
+                </div>
+                <div class="form__actions">
+                  <button class="btn btn--primary" type="submit">Add Funds</button>
+                </div>
+                <div id="fundError" class="alert alert--error hidden"></div>
+              </form>
+            </div>
+          </div>
+
+          <div id="head-assign" class="tabpane">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">Assign Payer (APPROVED → ASSIGNED)</h2>
+                <div class="toolbar">
+                  <input id="headAssignSearch" class="input" placeholder="Search: Department / Purpose / ID" />
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="headAssignTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div id="head-transactions" class="tabpane">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">All Transactions</h2>
+                <div class="toolbar">
+                  <select id="headTxnStatusFilter" class="input">
+                    <option value="">All Statuses</option>
+                    <option>ASSIGNED</option>
+                    <option>PAYMENT_INITIATED</option>
+                    <option>PAYMENT_CONFIRMED_BY_PAYER</option>
+                    <option>CASH_RECEIPT_CONFIRMED_BY_RECEIVER</option>
+                    <option>COMPLETED</option>
+                  </select>
+                  <input id="headTxnSearch" class="input" placeholder="Search: Txn ID / Request ID" />
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="headTransactionsTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div id="head-ledger" class="tabpane">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">Global Ledger</h2>
+                <div class="toolbar">
+                  <select id="headLedgerDept" class="input"></select>
+                  <button id="headLedgerExportBtn" class="btn btn--secondary">Export (CSV)</button>
+                </div>
+              </div>
+              <div class="kpi-row" id="headLedgerSummary"></div>
+              <div class="table-wrap">
+                <table class="table" id="headLedgerTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div id="head-audit" class="tabpane">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">Global Audit Logs</h2>
+                <div class="toolbar">
+                  <input id="headAuditSearch" class="input" placeholder="Search: actor / action / entityId" />
+                  <select id="headAuditEntityFilter" class="input">
+                    <option value="">All Entities</option>
+                    <option value="Request">Request</option>
+                    <option value="Transaction">Transaction</option>
+                    <option value="Ledger">Ledger</option>
+                  </select>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="headAuditTable"></table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Department Dashboard -->
+      <section id="deptView" class="view hidden">
+        <div class="kpi-row" id="deptKpis"></div>
+
+        <div class="tabs">
+          <button class="tab tab--active" data-tab="dept-requests">My Requests</button>
+          <button class="tab" data-tab="dept-pay">Transactions I Must Pay</button>
+          <button class="tab" data-tab="dept-confirm">Transactions I Must Confirm</button>
+          <button class="tab" data-tab="dept-ledger">My Ledger</button>
+          <button class="tab" data-tab="dept-audit">My Audit Logs</button>
+        </div>
+
+        <div class="tabpanes">
+          <div id="dept-requests" class="tabpane tabpane--active">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">Create Fund Request</h2>
+              </div>
+
+              <form id="createRequestForm" class="form">
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="reqAmount">Amount</label>
+                    <input id="reqAmount" type="number" min="0" step="0.01" required />
+                  </div>
+                  <div class="field">
+                    <label for="reqPurpose">Purpose</label>
+                    <input id="reqPurpose" maxlength="140" required />
+                  </div>
+                </div>
+                <div class="form__actions">
+                  <button class="btn btn--primary" type="submit">Submit Request</button>
+                </div>
+                <div id="reqError" class="alert alert--error hidden"></div>
+              </form>
+            </div>
+
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">My Requests</h2>
+                <div class="toolbar">
+                  <select id="deptReqStatusFilter" class="input">
+                    <option value="">All Statuses</option>
+                    <option>PENDING</option>
+                    <option>APPROVED</option>
+                    <option>REJECTED</option>
+                    <option>ASSIGNED</option>
+                    <option>PAID_PENDING_RECEIPT</option>
+                    <option>COMPLETED</option>
+                  </select>
+                  <input id="deptReqSearch" class="input" placeholder="Search: Request ID / Purpose" />
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="deptRequestsTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div id="dept-pay" class="tabpane">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">Transactions I Must Pay (payer)</h2>
+                <div class="toolbar">
+                  <input id="deptPaySearch" class="input" placeholder="Search: Txn ID / Request ID" />
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="deptPayTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div id="dept-confirm" class="tabpane">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">Transactions I Must Confirm (receiver)</h2>
+                <div class="toolbar">
+                  <input id="deptConfirmSearch" class="input" placeholder="Search: Txn ID / Request ID" />
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="deptConfirmTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div id="dept-ledger" class="tabpane">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">My Ledger</h2>
+                <div class="toolbar">
+                  <button id="deptLedgerExportBtn" class="btn btn--secondary">Export (CSV)</button>
+                </div>
+              </div>
+              <div class="kpi-row" id="deptLedgerSummary"></div>
+              <div class="table-wrap">
+                <table class="table" id="deptLedgerTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div id="dept-audit" class="tabpane">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="h2">My Audit Logs</h2>
+                <div class="toolbar">
+                  <input id="deptAuditSearch" class="input" placeholder="Search: action / entityId" />
+                  <select id="deptAuditEntityFilter" class="input">
+                    <option value="">All Entities</option>
+                    <option value="Request">Request</option>
+                    <option value="Transaction">Transaction</option>
+                    <option value="Ledger">Ledger</option>
+                  </select>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="deptAuditTable"></table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal -->
+      <div id="modalBackdrop" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+        <div class="modal">
+          <div class="modal__header">
+            <div class="modal__title" id="modalTitle">Modal</div>
+            <button class="btn btn--ghost" id="modalCloseBtn">✕</button>
+          </div>
+          <div class="modal__body" id="modalBody"></div>
+          <div class="modal__footer" id="modalFooter"></div>
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div id="toast" class="toast hidden"></div>
+    </main>
+
+    <footer class="footer">
+      <div class="muted small">© Internal Use Only • Audit-first Google Sheets implementation</div>
+    </footer>
+  </div>
+</body>
+</html>

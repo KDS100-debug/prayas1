@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prayas Sangeet Kala Academy</title>
+  <link rel="stylesheet" href="sangeet.css">
+  <link rel="stylesheet" href="../advanced-theme.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="../IMAGES/Prayas/logo.jpg" alt="Prayas Logo">
+        <span>Prayas Sangeet Kala Academy</span>
+      </div>
+      <a href="../index.html">Home</a>
+    </header>
+
+    <main class="sangeet-page">
+      <section class="sangeet-hero">
+        <div>
+          <p class="kicker">Music, Culture, Discipline</p>
+          <h1>Sangeet Kala Academy Fee Structure</h1>
+          <p>
+            View the live Google Sheet fee structure, select a class, choose the available
+            fee type, and see the correct amount instantly.
+          </p>
+        </div>
+      </section>
+
+      <section class="fee-panel" aria-labelledby="fee-title">
+        <div class="panel-header">
+          <div>
+            <h2 id="fee-title">Live Fee Details</h2>
+            <p>Data is loaded directly from the published Google Sheet.</p>
+          </div>
+          <div id="sheetStatus" class="sheet-status" role="status" aria-live="polite">
+            Loading sheet...
+          </div>
+        </div>
+
+        <div class="fee-controls">
+          <div class="field-group">
+            <label for="classSelect">Select Class</label>
+            <select id="classSelect" disabled>
+              <option value="">Loading classes...</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="feeTypeSelect">Select Fee Type</label>
+            <select id="feeTypeSelect" disabled>
+              <option value="">Select class first</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="amountCard" class="amount-card" hidden>
+          <p id="selectionSummary"></p>
+          <strong id="feeAmount"></strong>
+          <button id="payButton" class="pay-button" type="button" hidden>
+            Proceed to Payment
+          </button>
+        </div>
+
+        <div class="sheet-card">
+          <h2>Google Sheet View</h2>
+          <div id="sheetTable" class="sheet-table-container" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="sangeet.js"></script>
+  <script src="../responsive-site.js"></script>
+</body>
+</html>

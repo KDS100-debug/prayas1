@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confidential - Prayas Adhyayan Chakra</title>
+  <link rel="stylesheet" href="advanced-theme.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      color: #171717;
+      background:
+        linear-gradient(90deg, rgba(184, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(184, 0, 0, 0.035) 1px, transparent 1px),
+        linear-gradient(135deg, #ffffff 0%, #fff7f7 52%, #ffffff 100%);
+      background-size: 44px 44px, 44px 44px, auto;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    .confidential-shell {
+      width: min(980px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: clamp(32px, 6vw, 72px) 0;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px clamp(18px, 4vw, 48px);
+      color: #fff;
+      background: linear-gradient(135deg, #350404, #b80000);
+      box-shadow: 0 18px 46px rgba(42, 8, 8, 0.14);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .brand img {
+      width: 50px;
+      height: 50px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+    }
+
+    .topbar a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 13px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.13);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .confidential-card {
+      padding: clamp(24px, 5vw, 44px);
+      border: 1px solid rgba(184, 0, 0, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 30px 80px rgba(42, 8, 8, 0.18);
+    }
+
+    .confidential-card h1 {
+      color: #8f0000;
+      font-size: clamp(34px, 7vw, 62px);
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .confidential-card p {
+      max-width: 720px;
+      color: #5d6370;
+      font-size: clamp(16px, 2.2vw, 19px);
+    }
+
+    .resolution-card {
+      margin-top: 28px;
+      padding: clamp(20px, 4vw, 34px);
+      border: 1px solid rgba(184, 0, 0, 0.16);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 16px 42px rgba(42, 8, 8, 0.1);
+    }
+
+    .resolution-card h2 {
+      margin-bottom: 14px;
+      color: #8f0000;
+      font-size: clamp(24px, 4vw, 36px);
+      line-height: 1.12;
+    }
+
+    .resolution-card p {
+      max-width: none;
+      margin-top: 14px;
+      color: #2f3742;
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.75;
+      text-align: justify;
+    }
+
+    .resolution-meta {
+      display: inline-flex;
+      margin-bottom: 8px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #fff7f7;
+      color: #650707;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .notice {
+      margin-top: 24px;
+      padding: 16px;
+      border-left: 4px solid #b80000;
+      border-radius: 8px;
+      background: #fff7f7;
+      color: #650707;
+      font-weight: 800;
+    }
+
+    @media (max-width: 560px) {
+      .topbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .topbar a {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="IMAGES/Prayas/logo.jpg" alt="Prayas Logo">
+      <span>Prayas Confidential</span>
+    </div>
+    <a href="index.html">Back Home</a>
+  </header>
+
+  <main class="confidential-shell">
+    <section class="confidential-card">
+      <h1>Confidential Area</h1>
+      <p>
+        This page is intended for confidential Prayas Adhyayan Chakra information
+        and internal references.
+      </p>
+      <div class="notice">
+        Login successful. Confidential resolution record is shown below.
+      </div>
+    </section>
+
+    <section class="resolution-card">
+      <span class="resolution-meta">Internal Resolution</span>
+      <h2>Royalty Resolution Regarding Mr. Soneswar Narah</h2>
+      <p>
+        As per the agreement that came into effect in 2019, Prayas Adhyayan Chakra
+        (PAC) is liable to pay a royalty of 10% to Mr. Soneswar Narah in recognition
+        of his donation of land assets and his lifelong contribution to the organisation.
+        However, this provision was not implemented during the period from 2019 to 2025.
+      </p>
+      <p>
+        Beginning with the academic year 2026-27, the aforementioned royalty shall be
+        collected from the annual fees generated by the schools operated by PAC.
+      </p>
+      <p>
+        In keeping with the grants, investments, and personal contributions made by
+        Mr. Narah since the inception of PAC in 2004, the royalty amount that would
+        have accrued between 2019 and 2025 has been formally re-dedicated to the
+        institution itself. Nevertheless, the resolution to formally allocate the agreed
+        royalty shall take effect prospectively, starting from the budget of the academic
+        year 2026-27 onwards.
+      </p>
+      <p>
+        This royalty entitlement shall continue to be payable to the nominated family
+        member of Mr. Narah even after his demise.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

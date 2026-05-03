@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications - Prayas Adhyayan Chakra</title>
+  <link rel="stylesheet" href="../advanced-theme.css">
+  <link rel="stylesheet" href="publications.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="../IMAGES/Prayas/logo.jpg" alt="Prayas Logo">
+        <span>Prayas Adhyayan Chakra</span>
+      </div>
+      <a href="../index.html">Home</a>
+    </header>
+
+    <main>
+      <section class="publications-hero">
+        <div class="hero-copy">
+          <p class="kicker">Books, Ideas, Public Dialogue</p>
+          <h1>Publications</h1>
+          <p>
+            Browse Prayas publications from Prayas Adhyayan Chakra.
+            Stock, rates, PDFs, and order links are loaded from the published sheets.
+          </p>
+        </div>
+        <div class="hero-panel" aria-label="Publication summary">
+          <span>Live catalogue</span>
+          <strong id="catalogueCount">Loading...</strong>
+          <small>Updated from Google Sheets</small>
+        </div>
+      </section>
+
+      <section class="pub-section" id="publications-section">
+        <div class="pub-container">
+          <div class="section-heading">
+            <p class="kicker">Catalogue</p>
+            <h2>Available Books</h2>
+          </div>
+
+          <section class="pub-subsection" aria-labelledby="prayas-title">
+            <div class="subsection-header">
+              <div>
+                <h3 id="prayas-title">Prayas Publications</h3>
+                <p>In-house publications by Prayas Adhyayan Chakra.</p>
+              </div>
+              <span class="pub-count" id="prayas-count">Loading</span>
+            </div>
+
+            <div class="pub-loading" id="prayas-loading">
+              <div class="pub-spinner"></div>
+              <p>Loading publications...</p>
+            </div>
+            <div class="pub-error" id="prayas-error" hidden>
+              <p>Failed to load Prayas Publications. Please try again later.</p>
+            </div>
+            <div class="pub-grid" id="prayas-grid"></div>
+            <div class="pub-show-more-container" id="prayas-show-more" hidden>
+              <button class="pub-show-more-btn" type="button" onclick="PublicationsManager.showMoreBooks('prayas')">Show More</button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <img src="../IMAGES/Prayas/logo.jpg" alt="PRAYAS Logo" class="footer-logo">
+        <h2 class="footer-brand">PRAYAS ADHYAYAN CHAKRA</h2>
+        <div class="footer-description">
+          <p>Empowering education through quality learning and holistic development.</p>
+        </div>
+      </div>
+
+      <div class="footer-middle">
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../SCHOOL/school.html">Schools</a></li>
+            <li><a href="../index.html#about-us">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Sections</h3>
+          <ul>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="../AMAR PATHAR/amarpathar.html">Amar Pathar</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="../index.html#contact">Contact</a></li>
+            <li><a href="../index.html#about-us">About</a></li>
+            <li><a href="../index.html">Main Site</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <div>
+          <p>&copy; 2026 PRAYAS ADHYAYAN CHAKRA. All rights reserved.</p>
+          <p class="footer-created-by">Created by <strong>Ashish Alam Kabir</strong> and <strong>Farhan Ahmed</strong></p>
+        </div>
+
+        <div class="footer-links">
+          <a href="../index.html#about-us">About</a>
+          <span class="separator">|</span>
+          <a href="../index.html#contact">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="publications.js"></script>
+  <script src="../responsive-site.js"></script>
+</body>
+</html>

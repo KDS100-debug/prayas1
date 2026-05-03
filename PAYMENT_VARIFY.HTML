@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Verify - Prayas</title>
+  <link rel="stylesheet" href="advanced-theme.css">
+  <style>
+    :root {
+      --pay-red: #b80000;
+      --pay-dark: #171717;
+      --pay-line: #e4e4e4;
+      --pay-soft: #fff6f6;
+      --pay-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ffffff, #fff4f4);
+      color: var(--pay-dark);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .payment-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px clamp(16px, 4vw, 42px);
+      background: #ffffff;
+      border-bottom: 1px solid var(--pay-line);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-block img {
+      width: 54px;
+      height: 54px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .brand-block h1 {
+      margin: 0;
+      color: var(--pay-red);
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.1;
+    }
+
+    .brand-block p {
+      margin: 4px 0 0;
+      color: #555555;
+      font-size: 14px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .admin-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f2f2f2;
+      color: #222222;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .header-link,
+    .header-button,
+    .pay-button {
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 2px solid #000000;
+      border-radius: 8px;
+      background: var(--pay-red);
+      color: #ffffff;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .header-button.secondary,
+    .pay-button.secondary {
+      background: #ffffff;
+      color: var(--pay-red);
+      border-color: rgba(184, 0, 0, 0.36);
+    }
+
+    .auth-lock {
+      width: min(720px, calc(100% - 32px));
+      margin: 80px auto;
+      padding: clamp(24px, 4vw, 42px);
+      border: 1px solid var(--pay-line);
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: var(--pay-shadow);
+      text-align: center;
+    }
+
+    .auth-lock h2 {
+      margin: 0 0 10px;
+      color: var(--pay-red);
+      font-size: clamp(26px, 4vw, 40px);
+    }
+
+    .auth-lock p {
+      margin: 0 auto 22px;
+      color: #555555;
+      max-width: 540px;
+    }
+
+    .payment-workspace {
+      width: min(1180px, calc(100% - 32px));
+      margin: 32px auto 54px;
+    }
+
+    .filter-panel,
+    .results-panel {
+      border: 1px solid var(--pay-line);
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: var(--pay-shadow);
+    }
+
+    .filter-panel {
+      padding: clamp(18px, 3vw, 28px);
+    }
+
+    .panel-title {
+      margin: 0 0 16px;
+      color: var(--pay-red);
+      font-size: clamp(22px, 3vw, 30px);
+    }
+
+    .filter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .form-row {
+      min-width: 0;
+    }
+
+    .form-row label {
+      display: block;
+      margin-bottom: 6px;
+      color: #222222;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .form-row input,
+    .form-row select {
+      width: 100%;
+      min-height: 42px;
+      box-sizing: border-box;
+      border: 1px solid #cccccc;
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #ffffff;
+      font: inherit;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .status-line {
+      min-height: 22px;
+      margin-top: 14px;
+      color: #555555;
+      font-weight: 700;
+    }
+
+    .status-line.error {
+      color: #b00020;
+    }
+
+    .status-line.success {
+      color: #126c2f;
+    }
+
+    .results-panel {
+      margin-top: 22px;
+      overflow: hidden;
+    }
+
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--pay-line);
+      background: var(--pay-soft);
+    }
+
+    .results-header h2 {
+      margin: 0;
+      color: var(--pay-red);
+      font-size: 22px;
+    }
+
+    .result-count {
+      color: #333333;
+      font-weight: 800;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .payment-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 850px;
+    }
+
+    .payment-table th,
+    .payment-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--pay-line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .payment-table th {
+      background: #ffffff;
+      color: #222222;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .utr-cell {
+      color: var(--pay-red);
+      font-weight: 900;
+      word-break: break-word;
+    }
+
+    .empty-state {
+      padding: 32px 20px;
+      color: #555555;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    @media (max-width: 840px) {
+      .payment-header,
+      .results-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .filter-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-actions,
+      .button-row {
+        width: 100%;
+      }
+
+      .header-link,
+      .header-button,
+      .pay-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="payment-header">
+    <div class="brand-block">
+      <img src="IMAGES/Prayas/logo.jpg" alt="Prayas logo">
+      <div>
+        <h1>Payment Verify</h1>
+        <p>Search student payments and view UTR/reference number.</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span id="adminBadge" class="admin-badge" hidden></span>
+      <button id="logoutButton" class="header-button secondary" type="button" hidden>Logout</button>
+      <a class="header-link" href="index.html#site-login">Back to Login</a>
+    </div>
+  </header>
+
+  <section id="authLock" class="auth-lock" hidden>
+    <h2>Admin Login Required</h2>
+    <p>Only Super Admin and School Admin accounts can open the payment verification page.</p>
+    <a class="header-link" href="index.html#site-login">Go to Admin Login</a>
+  </section>
+
+  <main id="paymentWorkspace" class="payment-workspace" hidden>
+    <section class="filter-panel" aria-label="Payment filters">
+      <h2 class="panel-title">Find Payment</h2>
+      <form id="paymentFilterForm">
+        <div class="filter-grid">
+          <div class="form-row">
+            <label for="schoolName">School</label>
+            <select id="schoolName"></select>
+          </div>
+          <div class="form-row">
+            <label for="studentName">Student Name</label>
+            <input id="studentName" type="search" autocomplete="off" placeholder="Full name">
+          </div>
+          <div class="form-row">
+            <label for="fatherName">Father Name</label>
+            <input id="fatherName" type="search" autocomplete="off" placeholder="Father name">
+          </div>
+          <div class="form-row">
+            <label for="rollNumber">Roll Number</label>
+            <input id="rollNumber" type="search" autocomplete="off" placeholder="Roll number">
+          </div>
+          <div class="form-row">
+            <label for="className">Class</label>
+            <input id="className" type="search" autocomplete="off" placeholder="Class">
+          </div>
+          <div class="form-row">
+            <label for="paymentMonth">Month</label>
+            <input id="paymentMonth" type="search" autocomplete="off" placeholder="Month">
+          </div>
+        </div>
+        <div class="button-row">
+          <button id="searchButton" class="pay-button" type="submit">Search Payment</button>
+          <button id="clearButton" class="pay-button secondary" type="button">Clear</button>
+          <button id="reloadButton" class="pay-button secondary" type="button">Reload Sheet</button>
+        </div>
+      </form>
+      <div id="statusLine" class="status-line" aria-live="polite">Loading payment sheet...</div>
+    </section>
+
+    <section class="results-panel" aria-label="Payment results">
+      <div class="results-header">
+        <h2>Payment Result</h2>
+        <div id="resultCount" class="result-count">0 records</div>
+      </div>
+      <div class="table-wrap">
+        <table class="payment-table">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Father Name</th>
+              <th>Class</th>
+              <th>Roll Number</th>
+              <th>School</th>
+              <th>Month</th>
+              <th>Payment UTR/Reference Number</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="resultBody">
+            <tr>
+              <td class="empty-state" colspan="8">Loading payment data...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const PAYMENT_SOURCES = {
+      bokakhat: {
+        label: "Bokakhat",
+        url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsUNuj5nLtnMwf3HHpGrOpUyZyL209kV1gAsBjEZ_6UGF62wOUgdpnIghxHrRPVk9tVHNNWYNO1_mg/pub?gid=17739839&single=true&output=csv"
+      },
+      brahmaputra: {
+        label: "Brahmaputra",
+        url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsUNuj5nLtnMwf3HHpGrOpUyZyL209kV1gAsBjEZ_6UGF62wOUgdpnIghxHrRPVk9tVHNNWYNO1_mg/pub?gid=17739839&single=true&output=csv"
+      },
+      mohuramukh: {
+        label: "Mohuramukh",
+        url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsxkjBSYYETEksG4Cxiq3fVpH4pU1F7cY__CfTtN_2ANn12sg91ab5gqntjst5krrIUDnnIOmKrq4-/pub?gid=1535466066&single=true&output=csv"
+      }
+    };
+    const ADMIN_SESSION_KEY = "prayasSchoolAdminSessionV1";
+    const AUTHORIZED_ADMINS = {
+      SUPERADMIN: { role: "superadmin", school: "", displayName: "Super Admin" },
+      BOKAKHATADMIN: { role: "school-admin", school: "bokakhat", displayName: "Bokakhat Admin" },
+      MOHURAMUKHADMIN: { role: "school-admin", school: "mohuramukh", displayName: "Mohuramukh Admin" },
+      BRAGHMAPUTRAADMIN: { role: "school-admin", school: "brahmaputra", displayName: "Braghmaputra Admin" }
+    };
+
+    const FIELD_ALIASES = {
+      studentName: ["FULLNAME", "STUDENTNAME", "NAME"],
+      fatherName: ["FATHERSNAME", "FATHERNAME", "GUARDIANNAME"],
+      className: ["CLASS", "CLASSNAME"],
+      rollNumber: ["ROLLNUMBER", "ROLLNO", "ROLL"],
+      schoolName: ["SCHOOL", "SCHOOLNAME"],
+      paymentReference: ["PAYMENTUTRREFERENCENUMBER", "UTRREFERENCENUMBER", "REFERENCENUMBER", "PAYMENTREFERENCE", "TRANSACTIONID", "UTR"],
+      month: ["MONTH", "PAYMENTMONTH", "PAIDMONTH", "FEEMONTH"],
+      timestamp: ["TIMESTAMP", "DATE", "PAYMENTDATE"]
+    };
+
+    let currentAdminSession = null;
+    let paymentRows = [];
+    let fieldIndexes = {};
+
+    function $(id) {
+      return document.getElementById(id);
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, function(character) {
+        return {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        }[character];
+      });
+    }
+
+    function compactKey(value) {
+      return String(value || "")
+        .replace(/^\uFEFF/, "")
+        .toUpperCase()
+        .replace(/[^A-Z0-9]/g, "");
+    }
+
+    function readAdminSession() {
+      try {
+        const session = JSON.parse(localStorage.getItem(ADMIN_SESSION_KEY) || "null");
+        if (!session || !session.userId || !session.expiresAt) return null;
+
+        const admin = AUTHORIZED_ADMINS[String(session.userId).toUpperCase()];
+        if (!admin || Number(session.expiresAt) < Date.now()) {
+          localStorage.removeItem(ADMIN_SESSION_KEY);
+          return null;
+        }
+
+        return {
+          userId: String(session.userId).toUpperCase(),
+          displayName: admin.displayName,
+          role: admin.role,
+          school: admin.school
+        };
+      } catch (error) {
+        localStorage.removeItem(ADMIN_SESSION_KEY);
+        return null;
+      }
+    }
+
+    function showAuthLock() {
+      $("authLock").hidden = false;
+      $("paymentWorkspace").hidden = true;
+      $("adminBadge").hidden = true;
+      $("logoutButton").hidden = true;
+    }
+
+    function showAuthorizedWorkspace() {
+      $("authLock").hidden = true;
+      $("paymentWorkspace").hidden = false;
+      $("adminBadge").textContent = "Logged in: " + currentAdminSession.displayName;
+      $("adminBadge").hidden = false;
+      $("logoutButton").hidden = false;
+    }
+
+    function requireAdminSession() {
+      currentAdminSession = readAdminSession();
+      if (!currentAdminSession) {
+        showAuthLock();
+        return false;
+      }
+
+      showAuthorizedWorkspace();
+      return true;
+    }
+
+    function logoutAdmin() {
+      localStorage.removeItem(ADMIN_SESSION_KEY);
+      window.location.href = "index.html#site-login";
+    }
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let value = "";
+      let inQuotes = false;
+
+      for (let index = 0; index < text.length; index += 1) {
+        const character = text[index];
+        const nextCharacter = text[index + 1];
+
+        if (character === '"') {
+          if (inQuotes && nextCharacter === '"') {
+            value += '"';
+            index += 1;
+          } else {
+            inQuotes = !inQuotes;
+          }
+          continue;
+        }
+
+        if (character === "," && !inQuotes) {
+          row.push(value);
+          value = "";
+          continue;
+        }
+
+        if ((character === "\n" || character === "\r") && !inQuotes) {
+          if (character === "\r" && nextCharacter === "\n") index += 1;
+          row.push(value);
+          if (row.some(function(cell) { return String(cell).trim(); })) rows.push(row);
+          row = [];
+          value = "";
+          continue;
+        }
+
+        value += character;
+      }
+
+      row.push(value);
+      if (row.some(function(cell) { return String(cell).trim(); })) rows.push(row);
+      return rows;
+    }
+
+    function mapFields(headers) {
+      const headerMap = {};
+      headers.forEach(function(header, index) {
+        headerMap[compactKey(header)] = index;
+      });
+
+      fieldIndexes = {};
+      Object.keys(FIELD_ALIASES).forEach(function(fieldName) {
+        const match = FIELD_ALIASES[fieldName].find(function(alias) {
+          return Object.prototype.hasOwnProperty.call(headerMap, alias);
+        });
+        fieldIndexes[fieldName] = match ? headerMap[match] : -1;
+      });
+    }
+
+    function getCell(row, fieldName) {
+      const index = fieldIndexes[fieldName];
+      if (index === undefined || index < 0) return "";
+      return String(row[index] || "").trim();
+    }
+
+    function normalizeSearch(value) {
+      return String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
+    }
+
+    function matchesFilter(rowValue, filterValue) {
+      const filter = normalizeSearch(filterValue);
+      if (!filter) return true;
+      return normalizeSearch(rowValue).includes(filter);
+    }
+
+    function getSelectedSchoolKey() {
+      const selected = $("schoolName").value || "bokakhat";
+      return PAYMENT_SOURCES[selected] ? selected : "bokakhat";
+    }
+
+    function getSelectedPaymentSource() {
+      return PAYMENT_SOURCES[getSelectedSchoolKey()];
+    }
+
+    function shapeRow(row) {
+      const source = getSelectedPaymentSource();
+
+      return {
+        studentName: getCell(row, "studentName"),
+        fatherName: getCell(row, "fatherName"),
+        className: getCell(row, "className"),
+        rollNumber: getCell(row, "rollNumber"),
+        schoolName: getCell(row, "schoolName") || source.label,
+        paymentReference: getCell(row, "paymentReference"),
+        month: getCell(row, "month"),
+        timestamp: getCell(row, "timestamp")
+      };
+    }
+
+    function getFilters() {
+      return {
+        studentName: $("studentName").value,
+        fatherName: $("fatherName").value,
+        rollNumber: $("rollNumber").value,
+        className: $("className").value,
+        month: $("paymentMonth").value
+      };
+    }
+
+    function filterPayments() {
+      const filters = getFilters();
+      const results = paymentRows.filter(function(row) {
+        if (!matchesFilter(row.studentName, filters.studentName)) return false;
+        if (!matchesFilter(row.fatherName, filters.fatherName)) return false;
+        if (!matchesFilter(row.rollNumber, filters.rollNumber)) return false;
+        if (!matchesFilter(row.className, filters.className)) return false;
+        if (!matchesFilter(row.month, filters.month)) return false;
+        return true;
+      });
+
+      renderResults(results);
+      setStatus("Search complete for " + getSelectedPaymentSource().label + ".", "success");
+    }
+
+    function renderResults(rows) {
+      $("resultCount").textContent = rows.length + (rows.length === 1 ? " record" : " records");
+
+      if (!rows.length) {
+        $("resultBody").innerHTML = '<tr><td class="empty-state" colspan="8">No matching payment found.</td></tr>';
+        return;
+      }
+
+      $("resultBody").innerHTML = rows.map(function(row) {
+        return `
+          <tr>
+            <td>${escapeHTML(row.studentName || "-")}</td>
+            <td>${escapeHTML(row.fatherName || "-")}</td>
+            <td>${escapeHTML(row.className || "-")}</td>
+            <td>${escapeHTML(row.rollNumber || "-")}</td>
+            <td>${escapeHTML(row.schoolName || "-")}</td>
+            <td>${escapeHTML(row.month || "-")}</td>
+            <td class="utr-cell">${escapeHTML(row.paymentReference || "Not found")}</td>
+            <td>${escapeHTML(row.timestamp || "-")}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function setStatus(message, type) {
+      $("statusLine").textContent = message;
+      $("statusLine").className = "status-line" + (type ? " " + type : "");
+    }
+
+    async function loadPaymentSheet() {
+      const source = getSelectedPaymentSource();
+      setStatus("Loading " + source.label + " payment sheet...", "");
+      $("resultBody").innerHTML = '<tr><td class="empty-state" colspan="8">Loading payment data...</td></tr>';
+      $("resultCount").textContent = "0 records";
+
+      try {
+        const response = await fetch(source.url, { cache: "no-store" });
+        if (!response.ok) throw new Error(source.label + " payment sheet could not be loaded.");
+
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+        if (!rows.length) throw new Error(source.label + " payment sheet has no headers.");
+
+        mapFields(rows[0]);
+        paymentRows = rows.slice(1).map(shapeRow);
+        setStatus("Loaded " + paymentRows.length + " " + source.label + " payment records. Enter filters and search.", "success");
+        renderResults([]);
+      } catch (error) {
+        paymentRows = [];
+        setStatus(error.message || "Unable to load payment sheet.", "error");
+        $("resultBody").innerHTML = '<tr><td class="empty-state" colspan="8">Unable to load payment data.</td></tr>';
+      }
+    }
+
+    function clearFilters() {
+      ["studentName", "fatherName", "rollNumber", "className", "paymentMonth"].forEach(function(id) {
+        $(id).value = "";
+      });
+      renderResults([]);
+      setStatus("Filters cleared.", "");
+    }
+
+    function populateSchoolSelect() {
+      const allowedSchool = currentAdminSession && currentAdminSession.role !== "superadmin"
+        ? currentAdminSession.school
+        : "";
+      const schools = Object.entries(PAYMENT_SOURCES).filter(function(entry) {
+        return !allowedSchool || entry[0] === allowedSchool;
+      });
+
+      $("schoolName").innerHTML = schools.map(function(entry) {
+        return '<option value="' + escapeHTML(entry[0]) + '">' + escapeHTML(entry[1].label) + '</option>';
+      }).join("");
+
+      if (allowedSchool && PAYMENT_SOURCES[allowedSchool]) {
+        $("schoolName").value = allowedSchool;
+        $("schoolName").disabled = true;
+      } else {
+        $("schoolName").value = "bokakhat";
+      }
+    }
+
+    function bindEvents() {
+      $("paymentFilterForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        filterPayments();
+      });
+      $("schoolName").addEventListener("change", loadPaymentSheet);
+      $("clearButton").addEventListener("click", clearFilters);
+      $("reloadButton").addEventListener("click", loadPaymentSheet);
+      $("logoutButton").addEventListener("click", logoutAdmin);
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      if (!requireAdminSession()) return;
+      populateSchoolSelect();
+      bindEvents();
+      loadPaymentSheet();
+    });
+  </script>
+</body>
+</html>
