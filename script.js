@@ -29,7 +29,8 @@
             extraName: "Gyanabi Saikia",
             extraDesignation: "Headmistress",
             extraImage: "IMAGES/staf/GYANABI SAIKIA.jpeg",
-            email: "Email to be added"
+            extraEmail: "gyanabi.saikia@gmail.com",
+            email: ""
           }
         },
         brahmaputra: {
@@ -61,17 +62,22 @@
       }
 
       function renderPrincipal(details) {
-        const email = details.email.includes("@")
-          ? `<a href="mailto:${escapeHTML(details.email)}">${escapeHTML(details.email)}</a>`
-          : `<a>${escapeHTML(details.email)}</a>`;
+        const email = details.email
+          ? details.email.includes("@")
+            ? `<a href="mailto:${escapeHTML(details.email)}">${escapeHTML(details.email)}</a>`
+            : `<a>${escapeHTML(details.email)}</a>`
+          : "";
         const primaryImage = details.image
           ? `<img src="${escapeHTML(details.image)}" alt="${escapeHTML(details.name)}" loading="lazy">`
           : `<div class="principal-placeholder">${escapeHTML(details.initials)}</div>`;
         const extraImage = details.extraImage
           ? `<img src="${escapeHTML(details.extraImage)}" alt="${escapeHTML(details.extraName)}" loading="lazy">`
           : "";
+        const extraEmail = details.extraEmail
+          ? `<a href="mailto:${escapeHTML(details.extraEmail)}">${escapeHTML(details.extraEmail)}</a>`
+          : "";
         const extraPerson = details.extraName
-          ? `<div class="principal-extra">${extraImage}<h3>${escapeHTML(details.extraName)}</h3><strong>${escapeHTML(details.extraDesignation || "")}</strong></div>`
+          ? `<div class="principal-extra">${extraImage}<h3>${escapeHTML(details.extraName)}</h3><strong>${escapeHTML(details.extraDesignation || "")}</strong>${extraEmail}</div>`
           : "";
 
         return `
