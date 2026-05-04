@@ -14,9 +14,10 @@
       links: [
         { title: "Bokakhat Admit Card", description: "Print Bokakhat school admit cards.", url: "SCHOOL/admitcardtemplate1.html" },
         { title: "Mohuramukh Admit Card", description: "Print Mohuramukh school admit cards.", url: "SCHOOL/admitcardtemplate3.html" },
-        { title: "Braghmaputra Admit Card", description: "Print Braghmaputra school admit cards.", url: "SCHOOL/admitcardtemplate2.html" },
+        { title: "Brahmaputra Admit Card", description: "Print Brahmaputra school admit cards.", url: "SCHOOL/admitcardtemplate2.html" },
         { title: "Marksheet Template", description: "Generate school marksheets after admin login.", url: "SCHOOL/MARKSHEET.HTML" },
         { title: "Payment Verify", description: "Find student payment UTR/reference numbers.", url: "PAYMENT_VARIFY.HTML" },
+        { title: "Student Details", description: "View and filter student records for every school.", url: "#admin-student-details-section", samePage: true },
         { title: "Publication Ledger", description: "Open the publications area.", url: "PUBLICATIONS/publications.html" },
         { title: "Publication Party Balances", description: "View Book Rally publication balances.", url: "PRAYAS BOOK RALLY/bookrally.html?admin=superadmin#publication-party-balances" },
         { title: "Amar Pathar Party Balance", description: "View Amar Pathar party balances.", url: "AMAR PATHAR/amarpathar.html?admin=superadmin#amar-party-balances" }
@@ -31,7 +32,8 @@
       links: [
         { title: "Bokakhat Admit Card", description: "Print Bokakhat school admit cards.", url: "SCHOOL/admitcardtemplate1.html" },
         { title: "Marksheet Template", description: "Generate Bokakhat school marksheets.", url: "SCHOOL/MARKSHEET.HTML" },
-        { title: "Payment Verify", description: "Find student payment UTR/reference numbers.", url: "PAYMENT_VARIFY.HTML" }
+        { title: "Payment Verify", description: "Find Bokakhat student payment UTR/reference numbers.", url: "PAYMENT_VARIFY.HTML" },
+        { title: "Student Details", description: "View Bokakhat student records.", url: "#admin-student-details-section", samePage: true }
       ]
     },
     mohuramukhadmin: {
@@ -43,22 +45,25 @@
       links: [
         { title: "Mohuramukh Admit Card", description: "Print Mohuramukh school admit cards.", url: "SCHOOL/admitcardtemplate3.html" },
         { title: "Marksheet Template", description: "Generate Mohuramukh school marksheets.", url: "SCHOOL/MARKSHEET.HTML" },
-        { title: "Payment Verify", description: "Find student payment UTR/reference numbers.", url: "PAYMENT_VARIFY.HTML" }
+        { title: "Payment Verify", description: "Find Mohuramukh student payment UTR/reference numbers.", url: "PAYMENT_VARIFY.HTML" },
+        { title: "Student Details", description: "View Mohuramukh student records.", url: "#admin-student-details-section", samePage: true }
       ]
     },
-    braghmaputraadmin: {
-      label: "Braghmaputra Admin",
+    brahmaputraadmin: {
+      label: "Brahmaputra Admin",
       password: "33445577",
-      sessionUserId: "BRAGHMAPUTRAADMIN",
+      sessionUserId: "BRAHMAPUTRAADMIN",
       role: "school-admin",
       school: "brahmaputra",
       links: [
-        { title: "Braghmaputra Admit Card", description: "Print Braghmaputra school admit cards.", url: "SCHOOL/admitcardtemplate2.html" },
-        { title: "Marksheet Template", description: "Generate Braghmaputra school marksheets.", url: "SCHOOL/MARKSHEET.HTML" },
-        { title: "Payment Verify", description: "Find student payment UTR/reference numbers.", url: "PAYMENT_VARIFY.HTML" }
+        { title: "Brahmaputra Admit Card", description: "Print Brahmaputra school admit cards.", url: "SCHOOL/admitcardtemplate2.html" },
+        { title: "Marksheet Template", description: "Generate Brahmaputra school marksheets.", url: "SCHOOL/MARKSHEET.HTML" },
+        { title: "Payment Verify", description: "Find Brahmaputra student payment UTR/reference numbers.", url: "PAYMENT_VARIFY.HTML" },
+        { title: "Student Details", description: "View Brahmaputra student records.", url: "#admin-student-details-section", samePage: true }
       ]
     }
   };
+  ADMIN_ACCOUNTS.braghmaputraadmin = ADMIN_ACCOUNTS.brahmaputraadmin;
 
   function escapeHTML(value) {
     const div = document.createElement("div");
@@ -206,7 +211,7 @@
       accessSection.classList.add("is-visible");
       accessMessage.textContent = `Logged in as ${account.label}. Available tools are shown below.`;
       accessGrid.innerHTML = account.links.map((link) => `
-        <a class="authority-item" href="${escapeHTML(link.url)}" target="_blank" rel="noopener">
+        <a class="authority-item" href="${escapeHTML(link.url)}"${link.samePage ? "" : ' target="_blank" rel="noopener"'}>
           <strong>${escapeHTML(link.title)}</strong>
           <span>${escapeHTML(link.description)}</span>
         </a>

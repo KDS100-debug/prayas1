@@ -2,15 +2,15 @@
   const STUDENT_DETAILS_SHEETS = {
     bokakhat: {
       label: "Bokakhat Jatiya Bidyalay",
-      url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQoNbpVzKmBkNX_OYKYqOb96nKO2KJIOl-lRyu0rYrV5vMgTGqNkHcMFK0ILid2Vgx13MdhamM1jXJX/pub?gid=0&single=true&output=csv"
+      url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_sE3_xu9yygPS3kMtL8jxfoMxNBrgE9Jva8uPf3AJsvgR1nY1wd_GGVF-1dG4A7oQiJzr3J1VSfV2/pub?gid=913320722&single=true&output=csv"
     },
     brahmaputra: {
       label: "Brahmaputra Jatiya Bidyalay",
-      url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSjvLGr6JH7hBTizrFyzJbvstF7ye2tx5C3115ZgpHKErwG-AP0dckJcc3blJeI1LoQ5rdnWwG23cbq/pub?gid=0&single=true&output=csv"
+      url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRnsSrQcl2zaBoUJmEMCt-nfXb9cOySewd8NJVOrx3T2LZmcXLIVjNeawXx60wjqMw6xH5pBwfGeMFE/pub?gid=1463196399&single=true&output=csv"
     },
     mohuramukh: {
       label: "Mohuramukh Jatiya Bidyalay",
-      url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTK_4jKxfizTsnzqJC_F56lqTBi2wpgL1qxDW4wMvFzW6UD1EcB8xeWs8IT1aGMQViKTAVJ8BDVUy1R/pub?gid=0&single=true&output=csv"
+      url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS0porGZNVIhGUQQgzSOmXvii8_hRA-PsWXJ5SiuL7i427xAK3qFglB9oZjpp12HgQlA1zOF2hwWCT2/pub?gid=0&single=true&output=csv"
     }
   };
 

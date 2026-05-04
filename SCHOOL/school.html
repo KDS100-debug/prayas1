@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRAYAS</title>
-    <link rel="stylesheet" href="school.css">
+    <link rel="stylesheet" href="school.css?v=20260504-fee-ui-toggle">
   <link rel="stylesheet" href="../advanced-theme.css">
 </head>
 <body class="school-page">
@@ -110,6 +110,32 @@
                     <option value="monthly">Monthly Fee</option>
                 </select>
                 <p id="amount-display">Amount: </p>
+                <button id="previous-payment-toggle" class="previous-payment-toggle" type="button" aria-expanded="false" aria-controls="previous-payment-panel">Show Previous Payments</button>
+                <div id="previous-payment-panel" class="previous-payment-panel" aria-label="Previous payment lookup" hidden>
+                    <h4>See Your Previous Payments</h4>
+                    <div class="previous-payment-grid">
+                        <div class="previous-payment-field">
+                            <label for="previous-payment-roll">Roll Number:</label>
+                            <input id="previous-payment-roll" type="search" autocomplete="off" placeholder="Roll number">
+                        </div>
+                        <div class="previous-payment-field">
+                            <label for="previous-payment-name">Name:</label>
+                            <input id="previous-payment-name" type="search" autocomplete="off" placeholder="Student name">
+                        </div>
+                        <div class="previous-payment-field">
+                            <label for="previous-payment-father">Father Name:</label>
+                            <input id="previous-payment-father" type="search" autocomplete="off" placeholder="Father name">
+                        </div>
+                    </div>
+                    <div class="previous-payment-actions">
+                        <button id="previous-payment-search" class="previous-payment-button" type="button">Search</button>
+                        <button id="previous-payment-clear" class="previous-payment-button secondary" type="button">Clear</button>
+                    </div>
+                    <div id="previous-payment-status" class="previous-payment-status" aria-live="polite"></div>
+                    <div id="previous-payment-results" class="previous-payment-results" aria-live="polite">
+                        <p class="previous-payment-empty">No payment searched yet.</p>
+                    </div>
+                </div>
                 <button id="pay-button" disabled>Pay</button>
             </div>
         </section>
@@ -236,7 +262,7 @@
         </div>
     </footer>
 
-    <script src="school.js"></script>
+    <script src="school.js?v=20260504-payment-prefill"></script>
   <script src="../responsive-site.js"></script>
 </body>
 </html>

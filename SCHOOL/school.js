@@ -2,21 +2,39 @@
 const schoolSheets = {
   bokakhat: {
     name: "Bokakhat Jatiya Bidyalaya",
-    iframe: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRnsSrQcl2zaBoUJmEMCt-nfXb9cOySewd8NJVOrx3T2LZmcXLIVjNeawXx60wjqMw6xH5pBwfGeMFE/pubhtml?gid=0&single=true",
-    csv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRnsSrQcl2zaBoUJmEMCt-nfXb9cOySewd8NJVOrx3T2LZmcXLIVjNeawXx60wjqMw6xH5pBwfGeMFE/pub?gid=0&single=true&output=csv",
-    paymentForm: "https://docs.google.com/forms/d/e/1FAIpQLSdgu-ufGQ3jgq5I7TIt_EyXFg5zE6TIB_k-BOTvU6ExYX3ERw/viewform?usp=header"
+    iframe: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_sE3_xu9yygPS3kMtL8jxfoMxNBrgE9Jva8uPf3AJsvgR1nY1wd_GGVF-1dG4A7oQiJzr3J1VSfV2/pubhtml?gid=0&single=true",
+    csv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_sE3_xu9yygPS3kMtL8jxfoMxNBrgE9Jva8uPf3AJsvgR1nY1wd_GGVF-1dG4A7oQiJzr3J1VSfV2/pub?gid=0&single=true&output=csv",
+    paymentHistoryCsv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_sE3_xu9yygPS3kMtL8jxfoMxNBrgE9Jva8uPf3AJsvgR1nY1wd_GGVF-1dG4A7oQiJzr3J1VSfV2/pub?gid=1023911052&single=true&output=csv",
+    paymentForm: "https://docs.google.com/forms/d/e/1FAIpQLSdgu-ufGQ3jgq5I7TIt_EyXFg5zE6TIB_k-BOTvU6ExYX3ERw/viewform?usp=header",
+    paymentPrefillFields: {
+      className: "entry.1156960516",
+      amount: "entry.528271031",
+      feeType: "entry.1695545344"
+    }
   },
   brahmaputra: {
     name: "Brahmaputra Jatiya Bidyalaya",
     iframe: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRnsSrQcl2zaBoUJmEMCt-nfXb9cOySewd8NJVOrx3T2LZmcXLIVjNeawXx60wjqMw6xH5pBwfGeMFE/pubhtml?gid=0&single=true",
     csv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRnsSrQcl2zaBoUJmEMCt-nfXb9cOySewd8NJVOrx3T2LZmcXLIVjNeawXx60wjqMw6xH5pBwfGeMFE/pub?gid=0&single=true&output=csv",
-    paymentForm: "https://docs.google.com/forms/d/e/1FAIpQLSf4_TAq-aFbUKZrb7AawrvQVGdTdtSjjsQUHqu8cmjtG-BVwg/viewform?usp=header"
+    paymentHistoryCsv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRnsSrQcl2zaBoUJmEMCt-nfXb9cOySewd8NJVOrx3T2LZmcXLIVjNeawXx60wjqMw6xH5pBwfGeMFE/pub?gid=445482828&single=true&output=csv",
+    paymentForm: "https://docs.google.com/forms/d/e/1FAIpQLSf4_TAq-aFbUKZrb7AawrvQVGdTdtSjjsQUHqu8cmjtG-BVwg/viewform?usp=header",
+    paymentPrefillFields: {
+      className: "entry.867719843",
+      amount: "entry.1110843131",
+      feeType: "entry.259870326"
+    }
   },
   mohuramukh: {
     name: "Mohuramukh Jatiya Bidyalaya",
-    iframe: "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-f7w1L-P2QS3y4eqCMg-vEOyJ8C_vpW5pdoMmYcTJN2Tr7VD06bxBYaU6Fxq-XCv1S3R4kfoexJQe/pubhtml?gid=0&single=true",
-    csv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-f7w1L-P2QS3y4eqCMg-vEOyJ8C_vpW5pdoMmYcTJN2Tr7VD06bxBYaU6Fxq-XCv1S3R4kfoexJQe/pub?gid=0&single=true&output=csv",
-    paymentForm: "https://docs.google.com/forms/d/e/1FAIpQLSeo7pKTGKffakhVcygqMaG6pCfCgklUgrE3UBJNLTPSWcvk4Q/viewform?usp=header"
+    iframe: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS0porGZNVIhGUQQgzSOmXvii8_hRA-PsWXJ5SiuL7i427xAK3qFglB9oZjpp12HgQlA1zOF2hwWCT2/pubhtml?gid=562373769&single=true",
+    csv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS0porGZNVIhGUQQgzSOmXvii8_hRA-PsWXJ5SiuL7i427xAK3qFglB9oZjpp12HgQlA1zOF2hwWCT2/pub?gid=562373769&single=true&output=csv",
+    paymentHistoryCsv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS0porGZNVIhGUQQgzSOmXvii8_hRA-PsWXJ5SiuL7i427xAK3qFglB9oZjpp12HgQlA1zOF2hwWCT2/pub?gid=137449016&single=true&output=csv",
+    paymentForm: "https://docs.google.com/forms/d/e/1FAIpQLSeo7pKTGKffakhVcygqMaG6pCfCgklUgrE3UBJNLTPSWcvk4Q/viewform?usp=header",
+    paymentPrefillFields: {
+      className: "entry.1822578087",
+      amount: "entry.214341383",
+      feeType: "entry.1879276933"
+    }
   }
 };
 schoolSheets.braghmaputra = schoolSheets.brahmaputra;
@@ -34,6 +52,7 @@ const RANKERS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ73qhh
 // Store parsed sheet data for fee lookup
 let feeData = {};
 let rankerData = [];
+let paymentHistoryCache = {};
 
 // CSV Parser - Handles quoted values and commas
 function parseCSV(csvText) {
@@ -96,6 +115,21 @@ async function fetchSchoolData(csvUrl) {
     console.error('Error fetching CSV:', error);
     return null;
   }
+}
+
+async function fetchCsvRowsFromUrl(url) {
+  if (!url) throw new Error('CSV URL is missing.');
+
+  const fetchUrl = `${url}${url.includes('?') ? '&' : '?'}_=${Date.now()}`;
+  const response = await fetch(fetchUrl, { cache: 'no-store' });
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+
+  const csvText = await response.text();
+  const rows = parseCSV(csvText);
+  if (!rows.length) throw new Error('CSV has no rows');
+  return rows;
 }
 
 function escapeHTML(value) {
@@ -201,6 +235,39 @@ function formatFeeAmount(amount) {
   return /^(Rs\.?|INR|₹)/i.test(value) ? value : `Rs. ${value}`;
 }
 
+function normalizeGoogleFormEntryKey(entryId) {
+  const value = String(entryId || '').trim();
+  if (!value) return '';
+  return value.startsWith('entry.') ? value : `entry.${value}`;
+}
+
+function getPaymentFormFeeType(feeType) {
+  const formFeeTypes = {
+    monthly: 'MONTHLY FEE',
+    yearly: 'ADMISSION FEE'
+  };
+  return formFeeTypes[feeType] || String(feeType || '').trim();
+}
+
+function buildPaymentFormUrl(source, details) {
+  const url = new URL(source.paymentForm, window.location.href);
+  const fields = source.paymentPrefillFields || {};
+
+  const setField = (fieldName, value) => {
+    const key = normalizeGoogleFormEntryKey(fields[fieldName]);
+    const text = String(value ?? '').trim();
+    if (key && text) {
+      url.searchParams.set(key, text);
+    }
+  };
+
+  setField('className', details.className);
+  setField('amount', details.amount);
+  setField('feeType', details.feeType);
+
+  return url.toString();
+}
+
 // Extract classes from CSV data
 function extractClasses(data) {
   if (!data || data.length < 2) {
@@ -241,6 +308,203 @@ function getFeeAmount(className, feeType, data) {
 
   console.error(`Class "${className}" not found or fee missing for type "${feeType}"`);
   return null;
+}
+
+const PAYMENT_HISTORY_FIELDS = {
+  name: ['FULLNAME', 'STUDENTNAME', 'NAME'],
+  fatherName: ['FATHERSNAME', 'FATHERNAME', 'GUARDIANNAME'],
+  rollNumber: ['ROLLNUMBER', 'ROLLNO', 'ROLL'],
+  className: ['CLASS', 'CLASSNAME'],
+  paymentMonth: ['FEEMONTH', 'PAYMENTMONTH', 'PAIDMONTH', 'MONTH'],
+  feeType: ['FEETYPE', 'PAYMENTTYPE', 'TYPE', 'FEE']
+};
+
+function normalizePaymentLookup(value) {
+  return String(value || '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+function getPreviousPaymentElement(id) {
+  return document.getElementById(id);
+}
+
+function setPreviousPaymentStatus(message, type = '') {
+  const status = getPreviousPaymentElement('previous-payment-status');
+  if (!status) return;
+  status.textContent = message;
+  status.className = `previous-payment-status${type ? ` ${type}` : ''}`;
+}
+
+function resetPreviousPaymentResults(message = 'No payment searched yet.') {
+  const results = getPreviousPaymentElement('previous-payment-results');
+  if (results) {
+    results.innerHTML = `<p class="previous-payment-empty">${escapeHTML(message)}</p>`;
+  }
+  setPreviousPaymentStatus('');
+}
+
+function clearPreviousPaymentInputs() {
+  ['previous-payment-roll', 'previous-payment-name', 'previous-payment-father'].forEach((id) => {
+    const input = getPreviousPaymentElement(id);
+    if (input) input.value = '';
+  });
+  resetPreviousPaymentResults();
+}
+
+function setPreviousPaymentPanelVisible(isVisible) {
+  const toggle = getPreviousPaymentElement('previous-payment-toggle');
+  const panel = getPreviousPaymentElement('previous-payment-panel');
+
+  if (panel) {
+    panel.hidden = !isVisible;
+  }
+
+  if (toggle) {
+    toggle.setAttribute('aria-expanded', String(isVisible));
+    toggle.textContent = isVisible ? 'Hide Previous Payments' : 'Show Previous Payments';
+  }
+}
+
+function mapPaymentHistoryFields(headers) {
+  const headerMap = {};
+  headers.forEach((header, index) => {
+    headerMap[compactHeader(header)] = index;
+  });
+
+  const indexes = {};
+  Object.keys(PAYMENT_HISTORY_FIELDS).forEach((fieldName) => {
+    const match = PAYMENT_HISTORY_FIELDS[fieldName].find((alias) => Object.prototype.hasOwnProperty.call(headerMap, alias));
+    indexes[fieldName] = match ? headerMap[match] : -1;
+  });
+  return indexes;
+}
+
+function getPaymentHistoryCell(row, index) {
+  if (index === undefined || index < 0) return '';
+  return String(row[index] || '').trim();
+}
+
+function shapePaymentHistoryRow(row, indexes) {
+  return {
+    name: getPaymentHistoryCell(row, indexes.name),
+    fatherName: getPaymentHistoryCell(row, indexes.fatherName),
+    rollNumber: getPaymentHistoryCell(row, indexes.rollNumber),
+    className: getPaymentHistoryCell(row, indexes.className),
+    paymentMonth: getPaymentHistoryCell(row, indexes.paymentMonth),
+    feeType: getPaymentHistoryCell(row, indexes.feeType)
+  };
+}
+
+async function loadPaymentHistoryRows(schoolKey) {
+  if (paymentHistoryCache[schoolKey]) return paymentHistoryCache[schoolKey];
+
+  const source = schoolSheets[schoolKey];
+  if (!source?.paymentHistoryCsv) throw new Error('Previous payment sheet is not configured for this school.');
+
+  let rows = [];
+  try {
+    rows = await fetchCsvRowsFromUrl(source.paymentHistoryCsv);
+  } catch (error) {
+    console.error(`Error loading ${source.name} previous payment sheet:`, source.paymentHistoryCsv, error);
+    throw new Error(`${source.name} previous payment sheet could not be loaded.`);
+  }
+
+  const indexes = mapPaymentHistoryFields(rows[0] || []);
+  const records = rows.slice(1)
+    .map((row) => shapePaymentHistoryRow(row, indexes))
+    .filter((row) => row.name || row.rollNumber || row.className || row.fatherName || row.paymentMonth || row.feeType);
+
+  paymentHistoryCache[schoolKey] = records;
+  return records;
+}
+
+function paymentLookupMatches(value, filter, exact = false) {
+  const normalizedFilter = normalizePaymentLookup(filter);
+  if (!normalizedFilter) return true;
+
+  const normalizedValue = normalizePaymentLookup(value);
+  return exact ? normalizedValue === normalizedFilter : normalizedValue.includes(normalizedFilter);
+}
+
+function renderPreviousPaymentResults(rows) {
+  const results = getPreviousPaymentElement('previous-payment-results');
+  if (!results) return;
+
+  if (!rows.length) {
+    results.innerHTML = '<p class="previous-payment-empty">No previous payment found.</p>';
+    return;
+  }
+
+  results.innerHTML = `
+    <div class="previous-payment-table-wrap">
+      <table class="previous-payment-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Payment Month</th>
+            <th>Fee Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((row) => `
+            <tr>
+              <td>${escapeHTML(row.name || '-')}</td>
+              <td>${escapeHTML(row.rollNumber || '-')}</td>
+              <td>${escapeHTML(row.paymentMonth || '-')}</td>
+              <td>${escapeHTML(row.feeType || '-')}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+async function searchPreviousPayments() {
+  const schoolSelect = getPreviousPaymentElement('school-select');
+  const classSelect = getPreviousPaymentElement('class-select');
+  const selectedSchool = schoolSelect?.value || '';
+  const selectedClass = classSelect?.value || '';
+  const rollNumber = getPreviousPaymentElement('previous-payment-roll')?.value || '';
+  const studentName = getPreviousPaymentElement('previous-payment-name')?.value || '';
+  const fatherName = getPreviousPaymentElement('previous-payment-father')?.value || '';
+  const missingFields = [];
+  const source = schoolSheets[selectedSchool];
+
+  if (!selectedSchool || !source?.paymentHistoryCsv) missingFields.push('school');
+  if (!selectedClass) missingFields.push('class');
+  if (!rollNumber.trim()) missingFields.push('roll number');
+  if (!studentName.trim()) missingFields.push('name');
+  if (!fatherName.trim()) missingFields.push('father name');
+
+  if (missingFields.length) {
+    renderPreviousPaymentResults([]);
+    setPreviousPaymentStatus(`Please enter/select ${missingFields.join(', ')}.`, 'error');
+    return;
+  }
+
+  setPreviousPaymentStatus(`Loading ${source.name} previous payments...`);
+
+  try {
+    const rows = await loadPaymentHistoryRows(selectedSchool);
+    const matches = rows.filter((row) => (
+      paymentLookupMatches(row.className, selectedClass, true) &&
+      paymentLookupMatches(row.rollNumber, rollNumber, true) &&
+      paymentLookupMatches(row.name, studentName) &&
+      paymentLookupMatches(row.fatherName, fatherName)
+    ));
+
+    renderPreviousPaymentResults(matches);
+    setPreviousPaymentStatus(
+      matches.length
+        ? `Found ${matches.length} previous ${matches.length === 1 ? 'payment' : 'payments'}.`
+        : 'No previous payment found for these details.',
+      matches.length ? 'success' : 'error'
+    );
+  } catch (error) {
+    renderPreviousPaymentResults([]);
+    setPreviousPaymentStatus(error.message || 'Unable to load previous payments.', 'error');
+  }
 }
 
 // Update amount display
@@ -405,8 +669,13 @@ function initializeFeePayment() {
   const classSelect = document.getElementById('class-select');
   const feeTypeSelect = document.getElementById('fee-type-select');
   const payButton = document.getElementById('pay-button');
+  const previousPaymentToggle = document.getElementById('previous-payment-toggle');
+  const previousPaymentSearch = document.getElementById('previous-payment-search');
+  const previousPaymentClear = document.getElementById('previous-payment-clear');
 
   if (!schoolSelect || !classSelect || !feeTypeSelect || !payButton) return;
+
+  setPreviousPaymentPanelVisible(false);
 
   // School selection handler
   schoolSelect.addEventListener('change', async (event) => {
@@ -419,6 +688,7 @@ function initializeFeePayment() {
     feeTypeSelect.disabled = true;
     document.getElementById('amount-display').textContent = 'Amount: ';
     payButton.disabled = true;
+    clearPreviousPaymentInputs();
 
     if (!selectedSchool || !schoolSheets[selectedSchool]) {
       return;
@@ -460,6 +730,7 @@ function initializeFeePayment() {
   // Class selection handler
   classSelect.addEventListener('change', () => {
     updateAmountDisplay();
+    resetPreviousPaymentResults();
   });
 
   // Fee type selection handler
@@ -467,22 +738,55 @@ function initializeFeePayment() {
     updateAmountDisplay();
   });
 
+  if (previousPaymentToggle) {
+    previousPaymentToggle.addEventListener('click', () => {
+      const panel = getPreviousPaymentElement('previous-payment-panel');
+      setPreviousPaymentPanelVisible(Boolean(panel?.hidden));
+    });
+  }
+
+  if (previousPaymentSearch) {
+    previousPaymentSearch.addEventListener('click', searchPreviousPayments);
+  }
+
+  if (previousPaymentClear) {
+    previousPaymentClear.addEventListener('click', clearPreviousPaymentInputs);
+  }
+
   // Pay button handler
   payButton.addEventListener('click', () => {
     const selectedSchool = schoolSelect.value;
+    const selectedClass = classSelect.value;
+    const selectedFeeType = feeTypeSelect.value;
+    const source = schoolSheets[selectedSchool];
 
     // Validate school selection and payment form
-    if (!selectedSchool || !schoolSheets[selectedSchool]) {
+    if (!selectedSchool || !source) {
       alert('Error: Please select a valid school.');
       return;
     }
 
-    const paymentUrl = schoolSheets[selectedSchool].paymentForm;
-
-    if (!paymentUrl) {
+    if (!source.paymentForm) {
       alert('Error: Payment form not available for this school.');
       return;
     }
+
+    if (!selectedClass || !selectedFeeType) {
+      alert('Error: Please select class and fee type.');
+      return;
+    }
+
+    const amount = getFeeAmount(selectedClass, selectedFeeType, feeData[selectedSchool]);
+    if (!amount) {
+      alert('Error: Fee amount not available for this selection.');
+      return;
+    }
+
+    const paymentUrl = buildPaymentFormUrl(source, {
+      className: selectedClass,
+      amount,
+      feeType: getPaymentFormFeeType(selectedFeeType)
+    });
 
     // Redirect to payment form in new tab
     window.open(paymentUrl, '_blank');
@@ -764,10 +1068,11 @@ const loginUsers = {
     displayName: 'Super Admin',
     admitLinks: [
       { label: 'Bokakhat Admit Card', url: 'admitcardtemplate1.html' },
-      { label: 'Braghmaputra Admit Card', url: 'admitcardtemplate2.html' },
+      { label: 'Brahmaputra Admit Card', url: 'admitcardtemplate2.html' },
       { label: 'Mohuramukh Admit Card', url: 'admitcardtemplate3.html' },
       { label: 'Marksheet Template', url: 'MARKSHEET.HTML' },
-      { label: 'Payment Verify', url: '../PAYMENT_VARIFY.HTML' }
+      { label: 'Payment Verify', url: '../PAYMENT_VARIFY.HTML' },
+      { label: 'Student Details', url: '#admin-student-details-section' }
     ]
   },
   'BOKAKHATADMIN': {
@@ -778,7 +1083,8 @@ const loginUsers = {
     admitLinks: [
       { label: 'Bokakhat Admit Card', url: 'admitcardtemplate1.html' },
       { label: 'Marksheet Template', url: 'MARKSHEET.HTML' },
-      { label: 'Payment Verify', url: '../PAYMENT_VARIFY.HTML' }
+      { label: 'Payment Verify', url: '../PAYMENT_VARIFY.HTML' },
+      { label: 'Student Details', url: '#admin-student-details-section' }
     ]
   },
   'MOHURAMUKHADMIN': {
@@ -789,21 +1095,24 @@ const loginUsers = {
     admitLinks: [
       { label: 'Mohuramukh Admit Card', url: 'admitcardtemplate3.html' },
       { label: 'Marksheet Template', url: 'MARKSHEET.HTML' },
-      { label: 'Payment Verify', url: '../PAYMENT_VARIFY.HTML' }
+      { label: 'Payment Verify', url: '../PAYMENT_VARIFY.HTML' },
+      { label: 'Student Details', url: '#admin-student-details-section' }
     ]
   },
-  'BRAGHMAPUTRAADMIN': {
+  'BRAHMAPUTRAADMIN': {
     password: '33445577',
     role: 'school-admin',
     school: 'brahmaputra',
-    displayName: 'Braghmaputra Admin',
+    displayName: 'Brahmaputra Admin',
     admitLinks: [
-      { label: 'Braghmaputra Admit Card', url: 'admitcardtemplate2.html' },
+      { label: 'Brahmaputra Admit Card', url: 'admitcardtemplate2.html' },
       { label: 'Marksheet Template', url: 'MARKSHEET.HTML' },
-      { label: 'Payment Verify', url: '../PAYMENT_VARIFY.HTML' }
+      { label: 'Payment Verify', url: '../PAYMENT_VARIFY.HTML' },
+      { label: 'Student Details', url: '#admin-student-details-section' }
     ]
   }
 };
+loginUsers.BRAGHMAPUTRAADMIN = loginUsers.BRAHMAPUTRAADMIN;
 
 let currentLoggedUser = null;
 const SCHOOL_ADMIN_SESSION_KEY = 'prayasSchoolAdminSessionV1';
@@ -811,15 +1120,15 @@ const SCHOOL_ADMIN_SESSION_MS = 8 * 60 * 60 * 1000;
 const STUDENT_DETAILS_SHEETS = {
   bokakhat: {
     label: 'Bokakhat Jatiya Bidyalay',
-    url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQoNbpVzKmBkNX_OYKYqOb96nKO2KJIOl-lRyu0rYrV5vMgTGqNkHcMFK0ILid2Vgx13MdhamM1jXJX/pub?gid=0&single=true&output=csv'
+    url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS_sE3_xu9yygPS3kMtL8jxfoMxNBrgE9Jva8uPf3AJsvgR1nY1wd_GGVF-1dG4A7oQiJzr3J1VSfV2/pub?gid=913320722&single=true&output=csv'
   },
   brahmaputra: {
     label: 'Brahmaputra Jatiya Bidyalay',
-    url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSjvLGr6JH7hBTizrFyzJbvstF7ye2tx5C3115ZgpHKErwG-AP0dckJcc3blJeI1LoQ5rdnWwG23cbq/pub?gid=0&single=true&output=csv'
+    url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRnsSrQcl2zaBoUJmEMCt-nfXb9cOySewd8NJVOrx3T2LZmcXLIVjNeawXx60wjqMw6xH5pBwfGeMFE/pub?gid=1463196399&single=true&output=csv'
   },
   mohuramukh: {
     label: 'Mohuramukh Jatiya Bidyalay',
-    url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTK_4jKxfizTsnzqJC_F56lqTBi2wpgL1qxDW4wMvFzW6UD1EcB8xeWs8IT1aGMQViKTAVJ8BDVUy1R/pub?gid=0&single=true&output=csv'
+    url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS0porGZNVIhGUQQgzSOmXvii8_hRA-PsWXJ5SiuL7i427xAK3qFglB9oZjpp12HgQlA1zOF2hwWCT2/pub?gid=0&single=true&output=csv'
   }
 };
 const STUDENT_DETAIL_FIELDS = {
