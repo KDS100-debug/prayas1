@@ -1629,22 +1629,91 @@ iframe {
 
 /* About Us Section - Founder & Team */
 #about-us {
-    background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+    --about-red: #d32f2f;
+    --about-dark: #171717;
+    --about-gold: #f6b51b;
+    --about-ink: #343434;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: auto;
+    padding-block: 5rem;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 248, 248, 0.96) 100%),
+        repeating-linear-gradient(135deg, rgba(211, 47, 47, 0.05) 0 1px, transparent 1px 18px);
+    border-top: 1px solid rgba(23, 23, 23, 0.08);
+    border-bottom: 1px solid rgba(23, 23, 23, 0.08);
 }
 
-.founder-section {
+#about-us::before {
+    content: "";
+    position: absolute;
+    inset: 1.25rem;
+    z-index: -1;
+    border: 1px solid rgba(23, 23, 23, 0.07);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+#about-us h2 {
+    color: var(--about-dark);
+    font-size: 2.4rem;
+    line-height: 1.05;
+    letter-spacing: 0;
+    margin-bottom: 1.65rem;
+    text-transform: uppercase;
+    text-shadow: none;
+}
+
+#about-us h2:after {
+    width: 92px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--about-red) 0%, var(--about-dark) 48%, var(--about-gold) 100%);
+}
+
+#about-us .founder-section {
     width: 100%;
-    margin-bottom: 3rem;
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #d32f2f;
+    max-width: 920px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto 3rem;
+    background: linear-gradient(135deg, #ffffff 0%, #fffdf6 54%, #f7f7f7 100%);
+    border: 1px solid rgba(23, 23, 23, 0.1);
+    border-radius: 8px;
+    padding: 2.75rem;
+    box-shadow: 0 22px 45px rgba(23, 23, 23, 0.12);
 }
 
-.founder-container {
-    max-width: 1000px;
+#about-us .founder-section::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 6px;
+    background: linear-gradient(90deg, var(--about-red) 0%, var(--about-dark) 50%, var(--about-gold) 100%);
+}
+
+#about-us .founder-section::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(211, 47, 47, 0.08);
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+#about-us .founder-container {
+    max-width: 780px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+#about-us .founder-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.95rem;
+    text-align: center;
 }
 
 .founder-profile {
@@ -1670,29 +1739,53 @@ iframe {
     box-shadow: 0 12px 32px rgba(211, 47, 47, 0.5);
 }
 
-.founder-info h3 {
-    font-size: 2rem;
-    color: #212121;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.founder-title {
-    font-size: 1.3rem;
-    color: #d32f2f;
-    font-weight: 600;
-    margin-bottom: 1rem;
+#about-us .founder-info h3 {
+    max-width: 760px;
+    color: var(--about-dark);
+    font-size: 2.65rem;
+    line-height: 1.05;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+    text-shadow: none;
 }
 
-.founder-bio {
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    #about-us .founder-info h3 {
+        background: linear-gradient(90deg, var(--about-dark) 0%, var(--about-red) 54%, var(--about-dark) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+#about-us .founder-title {
+    max-width: 660px;
     font-size: 1rem;
-    line-height: 1.8;
-    color: #424242;
-    margin-bottom: 1.5rem;
-    text-align: justify;
+    line-height: 1.5;
+    color: #8b1e1e;
+    font-weight: 800;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    padding: 0.55rem 0.9rem;
+    background: rgba(246, 181, 27, 0.13);
+    border: 1px solid rgba(246, 181, 27, 0.3);
+    border-radius: 8px;
+}
+
+#about-us .founder-bio {
+    max-width: 700px;
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: var(--about-ink);
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(23, 23, 23, 0.09);
+    text-align: center;
 }
 
 .founder-social {
@@ -1861,6 +1954,19 @@ iframe {
 
 /* Responsive About Us */
 @media (max-width: 768px) {
+    #about-us {
+        padding-block: 3rem;
+    }
+
+    #about-us::before {
+        inset: 0.75rem;
+    }
+
+    #about-us h2 {
+        font-size: 1.85rem;
+        margin-bottom: 1.25rem;
+    }
+
     .founder-profile {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1870,16 +1976,29 @@ iframe {
         max-width: 100%;
     }
 
-    .founder-info h3 {
-        font-size: 1.6rem;
+    #about-us .founder-info h3 {
+        font-size: 1.75rem;
+        line-height: 1.12;
     }
 
-    .founder-title {
-        font-size: 1.1rem;
+    #about-us .founder-title {
+        font-size: 0.92rem;
+        padding: 0.5rem 0.7rem;
     }
 
-    .founder-section {
+    #about-us .founder-section {
         padding: 1.5rem;
+        box-shadow: 0 14px 30px rgba(23, 23, 23, 0.12);
+    }
+
+    #about-us .founder-section::after {
+        inset: 9px;
+    }
+
+    #about-us .founder-bio {
+        font-size: 0.98rem;
+        line-height: 1.7;
+        text-align: left;
     }
 
     .team-grid {
@@ -1912,15 +2031,15 @@ iframe {
         height: 24px;
     }
 
-    .founder-info h3 {
+    #about-us .founder-info h3 {
         font-size: 1.4rem;
     }
 
-    .founder-title {
-        font-size: 0.95rem;
+    #about-us .founder-title {
+        font-size: 0.86rem;
     }
 
-    .founder-bio {
+    #about-us .founder-bio {
         font-size: 0.9rem;
         line-height: 1.6;
     }
@@ -3391,6 +3510,20 @@ iframe {
     }
 }
 
+@media (max-width: 520px) {
+    .school-page #about-us h2 {
+        font-size: 1.65rem !important;
+    }
+
+    .school-page #about-us .founder-info h3 {
+        font-size: 1.4rem;
+    }
+
+    .school-page #about-us .founder-bio {
+        line-height: 1.65;
+    }
+}
+
 @media (max-width: 360px) {
     .school-page .nav-logo-section {
         gap: 8px;
@@ -3420,5 +3553,9 @@ iframe {
     .school-page .founder-section,
     .school-page .slideshow-container {
         padding: 12px !important;
+    }
+
+    .school-page #about-us .founder-info h3 {
+        font-size: 1.22rem;
     }
 }
